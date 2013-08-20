@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en" ng-app="maraPhotos">
+    <head>
+        <meta charset="utf-8">
+        <title>My HTML File</title>
+        <link rel="stylesheet" href="css/main.css">
+        <script src="lib/angular.min.js"></script>
+        <script src="lib/main.js"></script>
+    </head>
+    <body ng-controller="PhotoController">
+	<div class="title">
+		<h1>Mara</h1>
+		<span>Una (corta) vida en imágenes</span>
+		<div class="carrusel">
+
+		</div>
+	</div>
+	<div class="photo" ng-style="{'backgroundImage' : 'url(\'' + getBackgroundImage(current) + '\')'}">
+		<span class="summary"><span>{{summary}}</span></span>
+		<span class="navigation backward" backwardable="updateSummary(current)"></span>
+		<span class="navigation forward" forwardable="updateSummary(current)"></span>
+	</div>
+	<div class="aside">
+		<form class="inputs">
+			<h3>Tu elección</h3>
+			<p>
+				<label>Meses:</label>
+				<input type="text" id="months" ng-model="input.months" required/>
+				<span class="error" ng-show="months.$error.required">Obligatorio</span>
+			</p>
+			<p>
+				<label for="dates">Días:</label>
+				<input type="text" id="dates" ng-model="input.dates" required/>
+				<span class="error" ng-show="months.$error.required">Obligatorio</span>
+			</p>
+			<p>
+				<button>Comprobar</button>
+			</p>
+		</form>
+		<div class="results">
+			<h3>Resultado</h3>
+			<p>
+				Fecha: 
+			</p>
+			<p>
+				Meses: {{input.months}}
+				<br/>
+				Días: {{input.dates}}
+			</p>
+			<p>
+				Diferencia:
+			</p>
+		</div>
+		<div class="scores">
+			<h3>Puntuación</h3>
+			<p>
+				Error: {{error}}
+			</p>
+		</div>
+	</div>
+    </body>
+</html>
+

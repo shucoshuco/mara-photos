@@ -1,0 +1,125 @@
+div.title {
+	float: left;
+	width: 20%;
+	color: red;
+	font-size: 1em;
+	text-align: center;
+}
+
+div.title span {
+	font-size: 1.2em;
+	text-align: center;
+	font-style: italic;
+	color: red;
+	display: block;
+	text-align: center;
+}
+
+div.title div.carrusel {
+	width: 98%;
+	height: 300px;
+	border: 1px solid #000000;
+	margin-top: 20px;
+}
+
+div.photo {
+	float: left;
+	width: 800px;
+	height: 600px;
+	background-color: red;
+}
+
+span.summary {
+	display: block;
+	width: 100px;
+	height: 32px;
+	z-index: 10;
+	position: relative;
+	left: 695px;
+	top: 5px;
+	text-align: center;
+	border: 1px solid #000000;
+	opacity: 0.8;
+	background-color: white;
+}
+
+span.summary span {
+	margin-top: 5px;
+	display: block;
+}
+
+span.navigation {
+	float: left;
+	width: 52px;
+	height: 52px;
+	z-index: 20;
+	position: relative;
+	top: 254px;
+	background-size: cover;
+}
+
+span.backward {
+	left: 0px;
+}
+
+span.forward {
+	left:692px;
+}
+
+span.backwardShown {
+	background-image: url('../img/arrow_left.png');
+	cursor: pointer;
+}
+
+span.forwardShown {
+	background-image: url('../img/arrow_right.png');
+	cursor: pointer;
+}
+
+
+
+span.navigation.hidden {
+	display: none;
+}
+
+div.aside {
+    -moz-border-bottom-colors: none;
+    -moz-border-left-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-top-colors: none;
+    background: none repeat scroll 0 0 #F7F7F7;
+    border-color: #F5F5F5 #E1E1E1 #C4C4C4;
+    border-image: none;
+    border-left: 1px solid #E1E1E1;
+    border-radius: 5px 5px 5px 5px;
+    border-right: 1px solid #E1E1E1;
+    border-style: solid;
+    border-width: 1px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+    background: none repeat scroll 0 0 #FBFBFB;
+    float: left;
+    line-height: 1.6em;
+    padding: 0px 20px;
+    float: left;
+    margin-left: 10px;
+    width: 15%;
+}
+
+form.inputs, div.results, div.scores {
+    border-bottom: 1px solid #DADADA;
+}
+
+div.results, div.scores {
+    border-top: 1px solid #FFFFFF;
+}
+
+label {
+	float: left;
+	width: 60px;
+	margin-top: 
+}
+
+button {
+	display: block;
+	margin: auto;
+}
