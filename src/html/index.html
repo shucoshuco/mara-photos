@@ -1,10 +1,11 @@
-<!doctype html>
+﻿<!doctype html>
 <html lang="en" ng-app="maraPhotos">
     <head>
         <meta charset="utf-8">
-        <title>My HTML File</title>
+        <title>Mara - Fotografías</title>
         <link rel="stylesheet" href="css/main.css">
         <script src="lib/angular.min.js"></script>
+        <script src="lib/date.js"></script>
         <script src="lib/main.js"></script>
     </head>
     <body ng-controller="PhotoController">
@@ -15,49 +16,51 @@
 
 		</div>
 	</div>
-	<div class="photo" ng-style="{'backgroundImage' : 'url(\'' + getBackgroundImage(current) + '\')'}">
-		<span class="summary"><span>{{summary}}</span></span>
-		<span class="navigation backward" backwardable="updateSummary(current)"></span>
-		<span class="navigation forward" forwardable="updateSummary(current)"></span>
-	</div>
-	<div class="aside">
-		<form class="inputs">
-			<h3>Tu elección</h3>
-			<p>
-				<label>Meses:</label>
-				<input type="text" id="months" ng-model="input.months" required/>
-				<span class="error" ng-show="months.$error.required">Obligatorio</span>
-			</p>
-			<p>
-				<label for="dates">Días:</label>
-				<input type="text" id="dates" ng-model="input.dates" required/>
-				<span class="error" ng-show="months.$error.required">Obligatorio</span>
-			</p>
-			<p>
-				<button>Comprobar</button>
-			</p>
-		</form>
-		<div class="results">
-			<h3>Resultado</h3>
-			<p>
-				Fecha: 
-			</p>
-			<p>
-				Meses: {{input.months}}
-				<br/>
-				Días: {{input.dates}}
-			</p>
-			<p>
-				Diferencia:
-			</p>
+	<div class="main">
+		<div class="photo" ng-style="{'backgroundImage' : 'url(\'' + getBackgroundImage(current) + '\')'}">
+			<span class="summary"><span>{{summary}}</span></span>
+			<span class="navigation backward" backwardable="updatePhoto(current)"></span>
+			<span class="navigation forward" forwardable="updatePhoto(current)"></span>
 		</div>
-		<div class="scores">
-			<h3>Puntuación</h3>
-			<p>
-				Error: {{error}}
-			</p>
+		<div class="aside">
+			<form class="inputs">
+				<h3>Tu elección</h3>
+				<p>
+					<label for="months" disabled="{{formEnabled}}">Meses:</label>
+					<input type="text" id="months" ng-model="input.months" disabled="{{formEnabled}}" required/>
+					<span class="error" ng-show="months.$error.required">Obligatorio</span>
+				</p>
+				<p>
+					<label for="days" disabled="{{formEnabled}}">Días:</label>
+					<input type="text" id="days" ng-model="input.days" disabled="{{formEnabled}}" required/>
+					<span class="error" ng-show="months.$error.required">Obligatorio</span>
+				</p>
+				<p>
+					<button validate="updatePhoto(current)" disabled="{{formEnabled}}">Comprobar</button>
+				</p>
+			</form>
+			<div class="results">
+				<h3>Resultado</h3>
+				<p>
+					<label>Fecha:</label> {{result.date | date:'dd/MM/yyyy'}}
+				</p>
+				<p>
+					<label>Meses:</label> {{result.months}}
+					<br/>
+					<label>Días:</label> {{result.days}}
+				</p>
+				<p>
+					<label>Error: </label> {{result.diff}}
+				</p>
+			</div>
+			<div class="scores">
+				<h3>Puntuación</h3>
+				<p>
+					<label>Puntos:</label> {{error}}
+				</p>
+			</div>
 		</div>
-	</div>
+	    </div>
     </body>
 </html>
 
