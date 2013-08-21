@@ -30,16 +30,19 @@ div.main {
 div.title {
 	float: left;
 	width: 20%;
-	color: red;
 	font-size: 1em;
 	text-align: center;
+}
+
+div.title img {
+	width: 80%;
+	margin: 2em 0;
 }
 
 div.title span {
 	font-size: 1.2em;
 	text-align: center;
 	font-style: italic;
-	color: red;
 	display: block;
 	text-align: center;
 }
@@ -134,7 +137,7 @@ div.aside {
     width: 15%;
 }
 
-form.inputs, div.results, div.scores {
+form.inputs, div.results {
     border-bottom: 1px solid #DADADA;
 }
 
@@ -146,6 +149,17 @@ div.results, div.scores {
     border-top: 1px solid #FFFFFF;
 }
 
+img.flip {
+	width: 16px;
+	height: 16px;
+	float: right;
+	position: relative;
+	left: 15px;
+	margin-bottom: 5px;
+	cursor: pointer;
+	clear: right;
+}
+
 label {
 	float: left;
 	width: 65px;
@@ -155,4 +169,77 @@ label {
 button {
 	display: block;
 	margin: auto;
+}
+
+div.ranking-bar {
+    background-image: url("../img/progress.png");
+    background-repeat: no-repeat;
+    background-size: contain;
+    float: left;
+    height: 10px;
+    left: -177px;
+    position: relative;
+    top: -193px;
+    transform: rotate(-90deg);
+    width: 376px;
+}
+
+div.ranking {
+	margin-bottom: 10px;
+}
+
+div.rank {
+    border-radius: 0 0 0 0;
+    float: right;
+    font-size: 0.8em;
+    padding: 24px 10px;
+    text-align: right;
+    width: 71%;
+}
+
+.awful, .bad, .medium, .good {
+	border-bottom: 1px solid #DADADA;
+}
+
+.bad, .medium, .good, .great {
+    border-top: 1px solid #FFFFFF;
+}
+
+.awful {
+	background-color: red;
+	background-color: rgba(255, 0, 0, 0.5);
+}
+
+.bad {
+	background-color: orange;
+	background-color: rgba(255, 120, 0, 0.5);
+}
+
+.medium {
+	background-color: yellow;
+	background-color: rgba(255, 255, 120, 0.5);
+}
+
+.good {
+	background-color: blue;
+	background-color: rgba(0, 0, 255, 0.5);
+}
+
+.great {
+	background-color: green;
+	background-color: rgba(0, 255, 0, 0.5);
+}
+
+div.position {
+	background-image: url('../img/cara.jpg');
+	background-size: contain;
+	background-repeat: no-repeat;
+	width: 112%;
+	position: relative;
+	z-index: 10;
+	border-bottom: 1px solid #000000;
+	float: left;
+	height: 20px;
+	left: -15px;
+	top: -30px;
 }
