@@ -22,7 +22,7 @@
 			<span class="navigation backward" backwardable="updatePhoto(current)"></span>
 			<span class="navigation forward" forwardable="updatePhoto(current)"></span>
 		</div>
-		<div class="aside">
+		<div class="aside" ng-show="!showRanking" ng-animate="{enter: 'flip-enter', leave: 'flip-leave'}">
 			<form class="inputs">
 				<h3>Tu elección</h3>
 				<p>
@@ -59,9 +59,9 @@
 					<label>Puntos:</label> {{error}}
 				</p>
 			</div>
-			<img class="flip" src="img/flip.png"/>
+			<img class="flip" src="img/flip.png" flip="showRanking = true"/>
 		</div>
-		<div class="aside">
+		<div class="aside" ng-show="showRanking" ng-animate="{enter: 'flip-enter', leave: 'flip-leave'}">
 			<div class="ranking">
 				<h3>Ranking</h3>
 				<div class="rank awful">
@@ -86,7 +86,7 @@
 					
 				</div>
 			</div>
-			<img class="flip" src="img/flip.png"/>
+			<img class="flip" src="img/flip.png" flip="showRanking = false"/>
 		</div>
 	    </div>
     </body>

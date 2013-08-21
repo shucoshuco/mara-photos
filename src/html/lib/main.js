@@ -63,6 +63,7 @@ app.controller("PhotoController", function($scope) {
 	$scope.selection = {};
 	$scope.result = {};
 	$scope.error = 0;
+	$scope.showRanking = false;
 
 	$scope.updatePhoto = function(n) {
 		$scope.summary = (n + 1) + ' / ' + images.length;
@@ -187,6 +188,16 @@ app.directive("validate", function($filter) {
 
 				scope.$apply(attrs.validate);
 
+			});
+		}
+	}
+});
+
+app.directive("flip", function() {
+	return {
+		link: function(scope, element, attrs) {
+			element.bind("click", function() {
+				scope.$apply(attrs.flip);
 			});
 		}
 	}

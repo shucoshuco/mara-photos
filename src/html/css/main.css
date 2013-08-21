@@ -243,3 +243,24 @@ div.position {
 	left: -15px;
 	top: -30px;
 }
+
+.flip-enter {
+    -webkit-transition: 1s linear all; /* Chrome */
+    transition: 1s width all;
+    opacity: 0;
+}
+     
+.flip-enter.flip-enter-active {
+    opacity: 1;
+}
+
+.flip-leave {
+    -webkit-transition: 1s linear all; /* Chrome */
+    transition: 1s width all;
+    opacity: 1;
+}
+     
+.flip-leave.flip-leave-active {
+    opacity: 0;
+}
+
