@@ -3,6 +3,7 @@ var app = angular.module("maraPhotos", []);
 var n = 0;
 var baseDate = Date.parse('Nov 23th, 2012');
 var error = 0;
+var errorLimit = 1000;
 var images = [
 	{
 		name: "img/Chrysanthemum.jpg",
@@ -55,37 +56,47 @@ var images = [
 		
 ];
 
-app.controller("PhotoController", function($scope) {
+app.controller("PhotoController", function($scope, $timeout) {
 
 	$scope.images = images;
 	$scope.current = n;
+	$scope.random = Math.floor((Math.random() * images.length)+1);
 	$scope.input = {months: 1, days: 2};
 	$scope.selection = {};
 	$scope.result = {};
 	$scope.error = 0;
 	$scope.showRanking = false;
+	$scope.progressWidth = "100";
+
+	$scope.updateCarrousel = function() {
+		$scope.random = Math.floor((Math.random() * images.length)+1);
+		$timeout($scope.updateCarrousel, 3000);
+	}
 
 	$scope.updatePhoto = function(n) {
 		$scope.summary = (n + 1) + ' / ' + images.length;
 		if (images[n].done) {
 			$scope.input.months = images[n].selection.months;
 			$scope.input.days = images[n].selection.days;
-			$scope.formEnabled = "disabled";
+			$scope.formDisabled = true;
 
-			$scope.result.date = images[n].takenDate;
+			$scope.result.selDate = images[n].selection.date;
+			$scope.result.actualDate = images[n].takenDate;
 			$scope.result.months = images[n].result.months;
 			$scope.result.days = images[n].result.days;
 			$scope.result.diff = images[n].result.diff; 
 		} else {
 			$scope.input.months = ""
 			$scope.input.days = ""
-			$scope.formEnabled = "false";
+			$scope.formDisabled = false;
 
 			$scope.result.date = "-";
 			$scope.result.months = "-";
 			$scope.result.days = "-";
 			$scope.result.diff = "-";
 		}
+
+		$scope.progressWidth = $scope.error > errorLimit ? 0 : 100 - $scope.error * 100 / errorLimit;
 	}
 
 	$scope.getBackgroundImage = function(n) {
@@ -94,6 +105,8 @@ app.controller("PhotoController", function($scope) {
 	}
 
 	$scope.updatePhoto($scope.current);
+
+	$timeout($scope.updateCarrousel, 3000);
 })
 
 app.directive("backwardable", function() {
@@ -156,7 +169,25 @@ app.directive("forwardable", function() {
 	}
 })
 
-app.directive("validate", function($filter) {
+function calculateMonthsBetweenDates(d1, d2) {
+    var months;
+    months = (d2.getFullYear() - d1.getFullYear()) * 12;
+    months -= d1.getMonth();
+    months += d2.getMonth();
+    return months <= 0 ? 0 : months;
+}
+
+function calculateDaysBetweenDates(d1, d2) {
+    if (d2.getDate() >= d1.getDate())
+	return d2.getDate() - d1.getDate();
+
+    var prevYear = d2.is().january() ? d2.getFullYear() - 1 : d2.getFullYear();
+    var prevMonth = d2.is().january() ? 11 : d2.getMonth() - 1;
+
+    return Date.getDaysInMonth(prevYear, prevMonth) - d1.getDate() + d2.getDate();
+}
+
+app.directive("validate", function() {
 	return {
 		link: function(scope, element, attrs) {
 			element.bind("click", function() {
@@ -166,25 +197,28 @@ app.directive("validate", function($filter) {
 				var ref = image.takenDate;
 
 				var sel = baseDate.clone();
-				sel.addMonths(scope.input.months);
-				sel.addDays(scope.input.days);
+				sel.addMonths(parseInt(scope.input.months));
+				sel.addDays(parseInt(scope.input.days));
 
 				var doubleDiff = Math.abs(sel.getTime() - ref.getTime()) / (1000 * 60 * 60 * 24);
 				var diff = Math.floor(doubleDiff);
-				console.log(diff);
+
+				var refMonths = calculateMonthsBetweenDates(baseDate, ref);
+				var refDays  = calculateDaysBetweenDates(baseDate, ref);
 
 				image.done = true;
 				image.selection = {
+					date: sel,
 					months: scope.input.months,
 					days: scope.input.days
 				};
 				image.result = {
-					months: scope.input.months,
-					days: scope.input.days,
+					months: refMonths,
+					days: refDays,
 					diff: diff
 				};
 
-				scope.error += diff;
+				scope.error += diff;//
 
 				scope.$apply(attrs.validate);
 

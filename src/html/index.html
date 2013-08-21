@@ -12,7 +12,7 @@
 	<div class="title">
 		<img src="img/nombre.png"/>
 		<span>Una (corta) vida en imágenes</span>
-		<div class="carrusel">
+		<div class="carrusel" ng-style="{'backgroundImage' : 'url(\'' + getBackgroundImage(random) + '\')'}" ng-animate=" 'animate' ">
 
 		</div>
 	</div>
@@ -23,26 +23,27 @@
 			<span class="navigation forward" forwardable="updatePhoto(current)"></span>
 		</div>
 		<div class="aside" ng-show="!showRanking" ng-animate="{enter: 'flip-enter', leave: 'flip-leave'}">
-			<form class="inputs">
+			<form class="inputs" name="inputs">
 				<h3>Tu elección</h3>
 				<p>
-					<label for="months" disabled="{{formEnabled}}">Meses:</label>
-					<input type="text" id="months" ng-model="input.months" disabled="{{formEnabled}}" required/>
-					<span class="error" ng-show="months.$error.required">Obligatorio</span>
+					<label for="months">Meses:</label>
+					<input type="text" id="months" ng-model="input.months" ng-disabled="formDisabled" required/>
 				</p>
 				<p>
-					<label for="days" disabled="{{formEnabled}}">Días:</label>
-					<input type="text" id="days" ng-model="input.days" disabled="{{formEnabled}}" required/>
-					<span class="error" ng-show="months.$error.required">Obligatorio</span>
+					<label for="days">Días:</label>
+					<input type="text" id="days" ng-model="input.days" ng-disabled="formDisabled" required/>
+				</p>
+				<p ng-show="images[current].done">
+					<label>Fecha:</label> {{result.selDate | date:'dd/MM/yyyy'}}
 				</p>
 				<p>
-					<button validate="updatePhoto(current)" disabled="{{formEnabled}}">Comprobar</button>
+					<button type="submit" validate="updatePhoto(current)" ng-disabled="formDisabled || inputs.$invalid">Comprobar</button>
 				</p>
 			</form>
-			<div class="results">
+			<div class="results" ng-show="images[current].done">
 				<h3>Resultado</h3>
 				<p>
-					<label>Fecha:</label> {{result.date | date:'dd/MM/yyyy'}}
+					<label>Fecha:</label> {{result.actualDate | date:'dd/MM/yyyy'}}
 				</p>
 				<p>
 					<label>Meses:</label> {{result.months}}
@@ -58,6 +59,8 @@
 				<p>
 					<label>Puntos:</label> {{error}}
 				</p>
+				<div class="progress-front" ng-style="{'width': progressWidth + '%'}"></div>
+				<div class="progress-back"></div>
 			</div>
 			<img class="flip" src="img/flip.png" flip="showRanking = true"/>
 		</div>

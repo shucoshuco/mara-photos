@@ -52,12 +52,33 @@ div.title div.carrusel {
 	height: 300px;
 	border: 1px solid #000000;
 	margin-top: 20px;
+	background-size: cover;
+}
+
+.animate-enter {
+    -webkit-transition: 1s linear all; /* Chrome */
+    transition: 1s linear all;
+    opacity: 0;
+}
+     
+.animate-enter.animate-enter-active {
+    opacity: 1;
+}
+
+.animate-leave {
+    -webkit-transition: 1s linear all; /* Chrome */
+    transition: 1s linear all;
+    opacity: 1;
+}
+     
+.animate-leave.animate-leave-active {
+    opacity: 0;
 }
 
 div.photo {
 	float: left;
-	width: 800px;
-	height: 600px;
+	width: 760px;
+	height: 550px;
 	background-color: red;
 }
 
@@ -67,7 +88,7 @@ span.summary {
 	height: 32px;
 	z-index: 10;
 	position: relative;
-	left: 695px;
+	left: 655px;
 	top: 5px;
 	text-align: center;
 	border: 1px solid #000000;
@@ -86,7 +107,7 @@ span.navigation {
 	height: 52px;
 	z-index: 20;
 	position: relative;
-	top: 254px;
+	top: 230px;
 	background-size: cover;
 }
 
@@ -95,7 +116,7 @@ span.backward {
 }
 
 span.forward {
-	left:692px;
+	left: 660px;
 }
 
 span.backwardShown {
@@ -107,8 +128,6 @@ span.forwardShown {
 	background-image: url('../img/arrow_right.png');
 	cursor: pointer;
 }
-
-
 
 span.navigation.hidden {
 	display: none;
@@ -135,6 +154,7 @@ div.aside {
     float: left;
     margin-left: 12px;
     width: 15%;
+    font-size: 0.8em;
 }
 
 form.inputs, div.results {
@@ -262,5 +282,25 @@ div.position {
      
 .flip-leave.flip-leave-active {
     opacity: 0;
+}
+
+div.progress-front {
+    background: none repeat scroll 0 0 #F7F7F7;
+    float: right;
+    position: relative;
+    height: 5px;
+    top: 5px;
+    width: 50%;
+    z-index: 10;
+    border-radius: 0;
+}
+
+div.progress-back {
+    background-image: url('../img/progress.png');
+    float: left;
+    height: 5px;
+    width: 100%;
+    background-size: contain;
+    margin-bottom: 1em;
 }
 
