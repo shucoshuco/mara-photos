@@ -9,89 +9,93 @@
         <script src="lib/main.js"></script>
     </head>
     <body ng-controller="PhotoController">
-	<div class="title">
-		<img src="img/nombre.png"/>
-		<span>Una (corta) vida en imágenes</span>
-		<div class="carrusel" ng-style="{'backgroundImage' : 'url(\'' + getBackgroundImage(random) + '\')'}" ng-animate=" 'animate' ">
+    <div class="title">
+        <img src="img/nombre.png"/>
+        <span>Una (corta) vida en imágenes</span>
+        <div class="carrusel" ng-style="{'backgroundImage' : 'url(\'' + getBackgroundImage(random) + '\')'}" ng-animate=" 'animate' ">
 
-		</div>
-	</div>
-	<div class="main">
-		<div class="photo" ng-style="{'backgroundImage' : 'url(\'' + getBackgroundImage(current) + '\')'}">
-			<span class="summary"><span>{{summary}}</span></span>
-			<span class="navigation backward" backwardable="updatePhoto(current)"></span>
-			<span class="navigation forward" forwardable="updatePhoto(current)"></span>
-		</div>
-		<div class="aside" ng-show="!showRanking" ng-animate="{enter: 'flip-enter', leave: 'flip-leave'}">
+        </div>
+    </div>
+<!--<input type="text" ng-model="current"/>
+{{getBackgroundImage(current)}}-->
+    <div class="main">
+        <div class="photo" ng-style="{'backgroundImage' : 'url(\'' + getBackgroundImage(current) + '\')'}">
+            <span class="summary"><span>{{summary}}</span></span>
+            <span class="navigation backward" backwardable="updatePhoto(current)"></span>
+            <span class="navigation forward" forwardable="updatePhoto(current)"></span>
+        </div>
+        <section class="aside">
+            <div id="card" ng-class="showRanking">
+		    <figure class="front">
 			<form class="inputs" name="inputs">
-				<h3>Tu elección</h3>
-				<p>
-					<label for="months">Meses:</label>
-					<input type="text" id="months" ng-model="input.months" ng-disabled="formDisabled" required/>
-				</p>
-				<p>
-					<label for="days">Días:</label>
-					<input type="text" id="days" ng-model="input.days" ng-disabled="formDisabled" required/>
-				</p>
-				<p ng-show="images[current].done">
-					<label>Fecha:</label> {{result.selDate | date:'dd/MM/yyyy'}}
-				</p>
-				<p>
-					<button type="submit" validate="updatePhoto(current)" ng-disabled="formDisabled || inputs.$invalid">Comprobar</button>
-				</p>
+			    <h3>Tu elección</h3>
+			    <p>
+				<label for="months">Meses:</label>
+				<input type="text" id="months" ng-model="input.months" ng-disabled="formDisabled" required/>
+			    </p>
+			    <p>
+				<label for="days">Días:</label>
+				<input type="text" id="days" ng-model="input.days" ng-disabled="formDisabled" required/>
+			    </p>
+			    <p ng-show="images[current].done">
+				<label>Fecha:</label> {{result.selDate | date:'dd/MM/yyyy'}}
+			    </p>
+			    <p>
+				<button type="submit" validate="updatePhoto(current)" ng-disabled="formDisabled || inputs.$invalid">Comprobar</button>
+			    </p>
 			</form>
 			<div class="results" ng-show="images[current].done">
-				<h3>Resultado</h3>
-				<p>
-					<label>Fecha:</label> {{result.actualDate | date:'dd/MM/yyyy'}}
-				</p>
-				<p>
-					<label>Meses:</label> {{result.months}}
-					<br/>
-					<label>Días:</label> {{result.days}}
-				</p>
-				<p>
-					<label>Error: </label> {{result.diff}}
-				</p>
+			    <h3>Resultado</h3>
+			    <p>
+				<label>Fecha:</label> {{result.actualDate | date:'dd/MM/yyyy'}}
+			    </p>
+			    <p>
+				<label>Meses:</label> {{result.months}}
+				<br/>
+				<label>Días:</label> {{result.days}}
+			    </p>
+			    <p>
+				<label>Error: </label> {{result.diff}}
+			    </p>
 			</div>
 			<div class="scores">
-				<h3>Puntuación</h3>
-				<p>
-					<label>Puntos:</label> {{error}}
-				</p>
-				<div class="progress-front" ng-style="{'width': progressWidth + '%'}"></div>
-				<div class="progress-back"></div>
+			    <h3>Puntuación</h3>
+			    <p>
+				<label>Puntos:</label> {{error}}
+			    </p>
+			    <div class="progress-front" ng-style="{'width': progressWidth + '%'}"></div>
+			    <div class="progress-back"></div>
 			</div>
-			<img class="flip" src="img/flip.png" flip="showRanking = true"/>
-		</div>
-		<div class="aside" ng-show="showRanking" ng-animate="{enter: 'flip-enter', leave: 'flip-leave'}">
-			<div class="ranking">
-				<h3>Ranking</h3>
-				<div class="rank awful">
-					<span>McDonald's</span>
-				</div>
-				<div class="rank bad">
-					<span>Pecado Carnal</span>
-				</div>
-				<div class="rank medium">
-					<span>Otro</span>
-				</div>
-				<div class="rank good">
-					<span>Otro</span>
-				</div>
-				<div class="rank great">
-					<span>Sushi Ginza</span>
-				</div>
-				<div class="ranking-bar">
-					
-				</div>
-				<div name="position" class="position">
-					
-				</div>
+			<img class="flip" src="img/flip.png" flip="showRanking = 'flipped'"/>
+		    </figure>
+
+		    <figure class="back">
+			<h3>Ranking</h3>
+			<div class="rank awful">
+			    <span>McDonald's</span>
 			</div>
-			<img class="flip" src="img/flip.png" flip="showRanking = false"/>
-		</div>
-	    </div>
+			<div class="rank bad">
+			    <span>Pecado Carnal</span>
+			</div>
+			<div class="rank medium">
+			    <span>Otro</span>
+			</div>
+			<div class="rank good">
+			    <span>Otro</span>
+			</div>
+			<div class="rank great">
+			    <span>Sushi Ginza</span>
+			</div>
+			<div class="ranking-bar">
+			    
+			</div>
+			<div name="position" class="position" ng-style="{'top': -30 - (100 - progressWidth) * 352 / 100 + 'px'}">
+			    
+			</div>
+            		<img class="flip" src="img/flip.png" flip="showRanking = ''"/>
+		    </figure>
+            </div>
+        </section>
     </body>
 </html>
 

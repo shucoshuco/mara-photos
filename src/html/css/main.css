@@ -52,34 +52,20 @@ div.title div.carrusel {
 	height: 300px;
 	border: 1px solid #000000;
 	margin-top: 20px;
-	background-size: cover;
-}
-
-.animate-enter {
-    -webkit-transition: 1s linear all; /* Chrome */
-    transition: 1s linear all;
-    opacity: 0;
-}
-     
-.animate-enter.animate-enter-active {
-    opacity: 1;
-}
-
-.animate-leave {
-    -webkit-transition: 1s linear all; /* Chrome */
-    transition: 1s linear all;
-    opacity: 1;
-}
-     
-.animate-leave.animate-leave-active {
-    opacity: 0;
+	background-size: contain;
+	background-repeat: no-repeat;
+	background-position: center;
+	background-color: black;
 }
 
 div.photo {
 	float: left;
 	width: 760px;
 	height: 550px;
-	background-color: red;
+	background-size: contain;
+	background-repeat: no-repeat;
+	background-position: center;
+	transition: transform 1s;
 }
 
 span.summary {
@@ -133,28 +119,17 @@ span.navigation.hidden {
 	display: none;
 }
 
-div.aside {
-    -moz-border-bottom-colors: none;
-    -moz-border-left-colors: none;
-    -moz-border-right-colors: none;
-    -moz-border-top-colors: none;
-    background: none repeat scroll 0 0 #F7F7F7;
-    border-color: #F5F5F5 #E1E1E1 #C4C4C4;
-    border-image: none;
-    border-left: 1px solid #E1E1E1;
-    border-radius: 5px 5px 5px 5px;
-    border-right: 1px solid #E1E1E1;
-    border-style: solid;
-    border-width: 1px;
-    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
-    background: none repeat scroll 0 0 #FBFBFB;
+section.aside {
     float: left;
     line-height: 1.6em;
-    padding: 0px 20px;
     float: left;
     margin-left: 12px;
     width: 15%;
     font-size: 0.8em;
+    height: 500px;
+    position: relative;
+    perspective: 800px;
+    -webkit-perspective: 800px;
 }
 
 form.inputs, div.results {
@@ -163,21 +138,6 @@ form.inputs, div.results {
 
 input {
 	width: 50px;
-}
-
-div.results, div.scores {
-    border-top: 1px solid #FFFFFF;
-}
-
-img.flip {
-	width: 16px;
-	height: 16px;
-	float: right;
-	position: relative;
-	left: 15px;
-	margin-bottom: 5px;
-	cursor: pointer;
-	clear: right;
 }
 
 label {
@@ -191,21 +151,38 @@ button {
 	margin: auto;
 }
 
+div.results, div.scores {
+    border-top: 1px solid #FFFFFF;
+}
+
+img.flip {
+	width: 16px;
+	height: 16px;
+	float: right;
+	position: relative;
+	left: 145px;
+	margin-bottom: 5px;
+	cursor: pointer;
+	clear: right;
+	position: absolute;
+	top: 475px;
+}
+
 div.ranking-bar {
     background-image: url("../img/progress.png");
     background-repeat: no-repeat;
     background-size: contain;
     float: left;
     height: 10px;
-    left: -177px;
+    left: -159px;
     position: relative;
-    top: -193px;
+    top: -180px;
     transform: rotate(-90deg);
-    width: 376px;
-}
-
-div.ranking {
-	margin-bottom: 10px;
+    -webkit-transform: rotate(-90deg);
+    -moz-transform: rotate(-90deg);
+    -ms-transform: rotate(-90deg);
+    -o-transform: rotate(-90deg);
+    width: 352px;
 }
 
 div.rank {
@@ -264,26 +241,6 @@ div.position {
 	top: -30px;
 }
 
-.flip-enter {
-    -webkit-transition: 1s linear all; /* Chrome */
-    transition: 1s width all;
-    opacity: 0;
-}
-     
-.flip-enter.flip-enter-active {
-    opacity: 1;
-}
-
-.flip-leave {
-    -webkit-transition: 1s linear all; /* Chrome */
-    transition: 1s width all;
-    opacity: 1;
-}
-     
-.flip-leave.flip-leave-active {
-    opacity: 0;
-}
-
 div.progress-front {
     background: none repeat scroll 0 0 #F7F7F7;
     float: right;
@@ -304,3 +261,50 @@ div.progress-back {
     margin-bottom: 1em;
 }
 
+#card {
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	transform-style: preserve-3d;
+	transition: transform 1s;
+	-webkit-transform-style: preserve-3d;
+	-webkit-transition: transform 1s;
+	padding: 0;
+	-moz-border-bottom-colors: none;
+	-moz-border-left-colors: none;
+	-moz-border-right-colors: none;
+	-moz-border-top-colors: none;
+	background: none repeat scroll 0 0 #F7F7F7;
+	border-color: #F5F5F5 #E1E1E1 #C4C4C4;
+	border-image: none;
+	border-left: 1px solid #E1E1E1;
+	border-radius: 5px 5px 5px 5px;
+	border-right: 1px solid #E1E1E1;
+	border-style: solid;
+	border-width: 1px;
+	box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+	background: none repeat scroll 0 0 #FBFBFB;
+	padding: 0px 20px;
+}
+
+#card figure {
+	display: block;
+	position: absolute;
+	width: 80%;
+	height: 100%;
+	backface-visibility: hidden;
+	-webkit-backface-visibility: hidden;
+	margin: 0;
+}
+
+#card .back {
+	margin-bottom: 10px;
+	transform: rotateY( 180deg );
+	-webkit-transform: rotateY( 180deg );
+}
+
+#card.flipped {
+	transform: rotateY( 180deg );
+	-webkit-transform: rotateY( 180deg );
+}
+	
