@@ -2,11 +2,11 @@
 <html lang="en" ng-app="maraPhotos">
     <head>
         <meta charset="utf-8">
-        <title>Mara - Fotografías</title>
+        <title>Mara - Fotograf�as</title>
         <link rel="stylesheet" href="css/main.css">
         <script src="lib/angular.min.js"></script>
         <script src="lib/date.js"></script>
-        <script src="lib/photo-list.js"></script>
+        <script src="lib/photo-list-mock.js"></script>
         <script src="lib/main.js"></script>
     </head>
     <body ng-controller="PhotoController">
@@ -17,9 +17,32 @@
 
         </div>
     </div>
+    <div class="intro" ng-show="showIntro">
+	    <img src="img/feliz.png"/>
+	    <p>
+		¡¡¡Feliz 26 cumpleaños amor mío!!! ¿O eran 16? Bueno, da lo mismo, lo importante es que sigamos 
+		cumpliendo años juntos
+	    </p>
+	    <p>
+		    Como no podía ser de otra manera, la temática del juego de este año esta clara. Tu premio será
+		    mayor cuanto mejor conozcas a tu hija. Creo que es un buen argumento para que, si sacas mala
+		    puntuación, te quedes sin regalo.
+	    </p>
+	    <p>
+		    A continuación aparecerán un listado de fotos de la ratijilla. Tu labor es adivinar exactamente
+		    la fecha en la que se hizo la foto. El número de días de error se irá acumulando y al final
+		    obtendrás una puntuación final. Cuanto más alta sea esa puntuación, mayor será el error cometido
+		    y, por lo tanto, peor el premio que te llevarás. ¿Entendido?
+	    </p>
+	    <p>
+	    	Mucha suerte. ¡¡¡ A jugar !!!
+	    </p>
+	    
+	    <button class="start" ng-click="start()"></button>
+    </div>
 <!--<input type="text" ng-model="current"/>
 {{getBackgroundImage(current)}}-->
-    <div class="main">
+    <div class="main" ng-show="!showIntro">
         <div class="photo" ng-style="{'backgroundImage' : 'url(\'' + getBackgroundImage(current) + '\')'}">
             <span class="summary"><span>{{summary}}</span></span>
             <span class="navigation backward" backwardable="updatePhoto(current)"></span>
@@ -29,6 +52,14 @@
             <div id="card" ng-class="showRanking">
 		    <figure class="front">
 			<form class="inputs" name="inputs">
+			    <img src="img/help.png" ng-click="toogleHelpWindow()"/>
+			    <div class="help-window" ng-style="{'width': help.width, 'height': help.height, 'left': help.left}">
+				<div>
+					<span>Fecha: <input ng-model="help.date"/></span>
+					<span>Meses: {{help.months}}</span>
+					<span>Días: {{help.days}}</span>
+				</div>
+			    </div>
 			    <h3>Tu elección</h3>
 			    <p>
 				<label for="months">Meses:</label>
@@ -72,22 +103,12 @@
 
 		    <figure class="back">
 			<h3>Ranking</h3>
-			<div class="rank awful">
-			    <span>McDonald's</span>
+
+			<div 
+			<div class="rank" ng-repeat="rank in rankValues" ng-class="rank.className" ng-style="{'background-color': rank.color}" rankaware="352"/>
+				<span>{{rank.text}}</span>
 			</div>
-			<div class="rank bad">
-			    <span>Pecado Carnal</span>
-			</div>
-			<div class="rank medium">
-			    <span>Otro</span>
-			</div>
-			<div class="rank good">
-			    <span>Otro</span>
-			</div>
-			<div class="rank great">
-			    <span>Sushi Ginza</span>
-			</div>
-			<div class="ranking-bar">
+			<div class="ranking-bar" rankaware="50">
 			    
 			</div>
 			<div name="position" class="position" ng-style="{'top': -30 - (100 - progressWidth) * 352 / 100 + 'px'}">
@@ -97,6 +118,21 @@
 		    </figure>
             </div>
         </section>
+    </div>
+    <button ng-click="active = 'active'">Finalizar</button>
+    <div class="end" ng-class="active">
+	    ¡¡¡Completo!!!
+	    Esta es tu posición en el ranking:
+    	    <div class="rank" ng-repeat="rank in rankValues" ng-class="rank.className" ng-style="{'background-color': rank.color, 'height': '500'}" rankaware="500"/>
+		<span>{{rank.text}}</span>
+	    </div>
+	    <div class="ranking-bar">
+		    
+	    </div>
+	    <div name="position" class="position" ng-style="{'top': -30 - (100 - progressWidth) * 500 / 100 + 'px'}">
+			    
+	    </div>
+    </div>
     </body>
 </html>
 

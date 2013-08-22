@@ -46,6 +46,6 @@ var images = [
 		takenDate: Date.parse("Mar 12, 2013"),
 		error: 0,
 		done: false
-	}*/
+	}
 ];
 

@@ -6,7 +6,7 @@ div {
 	border-radius: 5px;
 }
 
-div.main {
+div.intro, div.main {
     -moz-border-bottom-colors: none;
     -moz-border-left-colors: none;
     -moz-border-right-colors: none;
@@ -25,6 +25,50 @@ div.main {
     line-height: 1.6em;
     padding: 20px 12px;
     width: 76%;
+}
+
+div.intro img {
+	display: block;
+	width: 700px;
+	height: 200px;
+	margin: auto;
+    	-moz-animation: spin 10s infinite linear;
+    	-webkit-animation: spin 10s infinite linear;
+    	animation: spin 10s infinite linear;
+	
+}
+
+@-moz-keyframes spin {
+    0% {
+        -moz-transform: rotateY(0deg);
+    }
+
+    100% {
+        -moz-transform: rotateY(360deg);
+    };
+}
+
+div.intro p {
+	text-align: justify;
+	padding: 0 30px;
+	color: #666666;
+	font-family: Monaco;
+}
+
+div.intro button.start {
+	display: block;
+	margin: auto;
+	width: 60px;
+	height: 60px;
+	background: url('../img/start.png') no-repeat center;
+	background-size: contain;
+	border: none;
+	cursor: pointer;
+}
+
+div.intro button.start:active {
+	background: url('../img/start-pressed.png') no-repeat center;
+	background-size: contain;
 }
 
 div.title {
@@ -132,8 +176,43 @@ section.aside {
     -webkit-perspective: 800px;
 }
 
+div.help-window {
+	position: absolute;
+	width: 0;
+	height: 0;
+	z-index: 30;
+	overflow: hidden;
+	transition: all 1s ease-in-out;
+	-webkit-transition: all 1s ease-in-out;
+	background: white;
+	border: 1px solid #000000;
+	left: 148px;
+	top: 28px;
+}
+
+div.help-window div {
+	padding: 15px;
+}
+
+div.help-window span {
+	display: block;
+	width: 170px;
+}
+
+div.help-window input {
+	margin-left: 10px;
+	width: 95px;
+}
+
 form.inputs, div.results {
     border-bottom: 1px solid #DADADA;
+}
+
+form.inputs img {
+	float: right;
+	width: 16px;
+	height: 16px;
+	cursor: pointer;
 }
 
 input {
@@ -177,19 +256,18 @@ div.ranking-bar {
     left: -159px;
     position: relative;
     top: -180px;
+    width: 352px;
     transform: rotate(-90deg);
     -webkit-transform: rotate(-90deg);
     -moz-transform: rotate(-90deg);
     -ms-transform: rotate(-90deg);
     -o-transform: rotate(-90deg);
-    width: 352px;
 }
 
 div.rank {
     border-radius: 0 0 0 0;
     float: right;
     font-size: 0.8em;
-    padding: 24px 10px;
     text-align: right;
     width: 71%;
 }
@@ -200,31 +278,6 @@ div.rank {
 
 .bad, .medium, .good, .great {
     border-top: 1px solid #FFFFFF;
-}
-
-.awful {
-	background-color: red;
-	background-color: rgba(255, 0, 0, 0.5);
-}
-
-.bad {
-	background-color: orange;
-	background-color: rgba(255, 120, 0, 0.5);
-}
-
-.medium {
-	background-color: yellow;
-	background-color: rgba(255, 255, 120, 0.5);
-}
-
-.good {
-	background-color: blue;
-	background-color: rgba(0, 0, 255, 0.5);
-}
-
-.great {
-	background-color: green;
-	background-color: rgba(0, 255, 0, 0.5);
 }
 
 div.position {
@@ -308,3 +361,19 @@ div.progress-back {
 	-webkit-transform: rotateY( 180deg );
 }
 	
+div.end {
+	background-color: white;
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: 100;
+	display: none;
+	opacity: 0;
+	transition: transform 3s linear;
+	padding: 2em;
+}
+
+div.end.active {
+	display: block;
+	opacity: 1;
+}
