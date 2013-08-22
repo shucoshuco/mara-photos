@@ -2,14 +2,15 @@
 <html lang="en" ng-app="maraPhotos">
     <head>
         <meta charset="utf-8">
-        <title>Mara - Fotograf�as</title>
+        <title>Mara - Fotografías</title>
         <link rel="stylesheet" href="css/main.css">
         <script src="lib/angular.min.js"></script>
         <script src="lib/date.js"></script>
-        <script src="lib/photo-list-mock.js"></script>
+        <script src="lib/photo-list.js"></script>
         <script src="lib/main.js"></script>
     </head>
     <body ng-controller="PhotoController">
+    <embed height="0" width="0" loop="true" src="media/back.mp3">
     <div class="title">
         <img src="img/nombre.png"/>
         <span>Una (corta) vida en imágenes</span>
@@ -104,34 +105,38 @@
 		    <figure class="back">
 			<h3>Ranking</h3>
 
-			<div 
-			<div class="rank" ng-repeat="rank in rankValues" ng-class="rank.className" ng-style="{'background-color': rank.color}" rankaware="352"/>
-				<span>{{rank.text}}</span>
+			<div class="rank" ng-repeat="rank in rankValues" ng-class="rank.className" ng-style="{'background-color': rank.color}">
+				{{rank.text}}
 			</div>
-			<div class="ranking-bar" rankaware="50">
+			<div class="ranking-bar">
 			    
 			</div>
-			<div name="position" class="position" ng-style="{'top': -30 - (100 - progressWidth) * 352 / 100 + 'px'}">
+			<div name="position" class="position" ng-style="{'top': -45 - (100 - progressWidth) * 352 / 100 + 'px'}">
 			    
 			</div>
+			<p>
+				<button ng-show="complete" ng-click="active = 'active'">Ver resultado</button>
+			</p>
             		<img class="flip" src="img/flip.png" flip="showRanking = ''"/>
 		    </figure>
             </div>
         </section>
     </div>
-    <button ng-click="active = 'active'">Finalizar</button>
     <div class="end" ng-class="active">
-	    ¡¡¡Completo!!!
-	    Esta es tu posición en el ranking:
-    	    <div class="rank" ng-repeat="rank in rankValues" ng-class="rank.className" ng-style="{'background-color': rank.color, 'height': '500'}" rankaware="500"/>
-		<span>{{rank.text}}</span>
+	<div class="wrapper">
+	    <h3>Esta es tu posición en el ranking: {{rankValues[rankIndex].text}}</h3>
+	    <p>El premio que corresponde a este puesto es: {{rankValues[rankIndex].award}}</p>
+    	    <div class="rank" ng-repeat="rank in rankValues" ng-class="rank.className" ng-style="{'background-color': rank.color}"/>
+		<span class="rankText">{{rank.text}}</span>
+		<span class="rankAward">{{rank.award}}</span>
 	    </div>
 	    <div class="ranking-bar">
 		    
 	    </div>
-	    <div name="position" class="position" ng-style="{'top': -30 - (100 - progressWidth) * 500 / 100 + 'px'}">
+	    <div name="position" class="position" ng-style="{'top': -48 - (100 - progressWidth) * 383 / 100 + 'px'}">
 			    
 	    </div>
+	</div>
     </div>
     </body>
 </html>

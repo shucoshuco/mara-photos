@@ -3,32 +3,37 @@
 var n = 0;
 var baseDate = Date.parse('Nov 23th, 2012');
 var error = 0;
-var errorLimit = 1000;
+var errorLimit = 2000;
 var rankValues = [
 		{
 			text: "¿Es hija tuya?",
 			className: "awful",
-			color: "rgba(255, 0, 0, 0.5)"
+			color: "rgba(255, 0, 0, 0.5)",
+			award: "Te has ganado a pulso  una maravillosa comida en el McDonald's"
 		},
 		{
 			text: "Te suena de lejos",
 			className: "bad",
-			color: "rgba(255, 120, 0, 0.5)"
+			color: "rgba(255, 120, 0, 0.5)",
+			award: "Por que tu hija te suene no puedes pretender mucho más que una cena en el Pecado Carnal"
 		},
 		{
 			text: "La conoces",
 			className: "medium",
-			color: "rgba(255, 255, 120, 0.5)"
+			color: "rgba(255, 255, 120, 0.5)",
+			award: "Otro"
 		},
 		{
 			text: "Madre atenta",
 			className: "good",
-			color: "rgba(0, 0, 255, 0.5)"
+			color: "rgba(0, 0, 255, 0.5)",
+			award: "Tienes derecho a una suculenta comida en el Sushi Ginza"
 		},
 		{
 			text: "Supermamá",
 			className: "great",
-			color: "rgba(0, 255, 0, 0.5)"
+			color: "rgba(0, 255, 0, 0.5)",
+			award: "Te mereces una sesión de Spa con masaje incluido"
 		}
 			
 	];
@@ -41,7 +46,8 @@ app.controller("PhotoController", function($scope, $timeout) {
 	$scope.input = {months: 1, days: 2};
 	$scope.selection = {};
 	$scope.result = {};
-	$scope.error = 0;
+	$scope.errorLimit = errorLimit;
+	$scope.error = error;
 	$scope.showRanking = "";
 	$scope.progressWidth = "100";
 	$scope.showIntro = true;
@@ -54,6 +60,7 @@ app.controller("PhotoController", function($scope, $timeout) {
 		days: ""
 	};
 	$scope.rankValues = rankValues;
+	$scope.complete = false;
 
 	$scope.start = function() {
 		$scope.showIntro = false;
@@ -87,11 +94,17 @@ app.controller("PhotoController", function($scope, $timeout) {
 			$scope.result.diff = "-";
 		}
 
-		$scope.progressWidth = $scope.error > errorLimit ? 0 : 100 - $scope.error * 100 / errorLimit;
+		if ($scope.error > errorLimit) {
+			$scope.progressWidth = 0;
+			$scope.rankIndex = 0;
+		} else {
+			$scope.progressWidth = 100 - $scope.error * 100 / errorLimit;
+			$scope.rankIndex = $scope.rankValues.length - (Math.floor($scope.error * $scope.rankValues.length / $scope.errorLimit) + 1);
+		}
 	}
 
 	$scope.getBackgroundImage = function(n) {
-		var img = images[n].name;
+		var img = $scope.images[n].name;
 		return img;
 	}
 
@@ -99,13 +112,13 @@ app.controller("PhotoController", function($scope, $timeout) {
 		if ($scope.help.shown) {
 			$scope.help.width = "0";
 			$scope.help.height = "0";
-			$scope.help.left = "148px";
+			$scope.help.left = "140px";
 			$scope.help.date = "";
 			$scope.help.months = "-";
 			$scope.help.days = "-";
 			$scope.help.shown = false;
 		} else {
-			$scope.help.width = "170px";
+			$scope.help.width = "180px";
 			$scope.help.height = "85px";
 			$scope.help.left = "0px";
 			$scope.help.date = "";
@@ -247,33 +260,24 @@ app.directive("validate", function() {
 					diff: diff
 				};
 
-				scope.error += diff;//
+				scope.error += diff;
 
 				scope.$apply(attrs.validate);
+
+				if (scope.current == scope.images.length - 1)
+					scope.complete = true;
 
 			});
 		}
 	}
 });
 
-app.directive("flip", function() {
+app.directive("flip", function() { 
 	return {
 		link: function(scope, element, attrs) {
 			element.bind("click", function() {
 				scope.$apply(attrs.flip);
 			});
-		}
-	}
-});
-
-app.directive("rankaware", function() {
-	return {
-		scope: {
-			rankaware: "@"
-		},
-		link: function(scope, element, attrs) {
-			var padding = scope.rankaware / (rankValues.length * 3);
-			element.css("padding", padding + "px 10px");
 		}
 	}
 });

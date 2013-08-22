@@ -30,7 +30,7 @@ div.intro, div.main {
 div.intro img {
 	display: block;
 	width: 700px;
-	height: 200px;
+	height: 165px;
 	margin: auto;
     	-moz-animation: spin 10s infinite linear;
     	-webkit-animation: spin 10s infinite linear;
@@ -118,7 +118,7 @@ span.summary {
 	height: 32px;
 	z-index: 10;
 	position: relative;
-	left: 655px;
+	left: 639px;
 	top: 5px;
 	text-align: center;
 	border: 1px solid #000000;
@@ -142,11 +142,11 @@ span.navigation {
 }
 
 span.backward {
-	left: 0px;
+	left: 10px;
 }
 
 span.forward {
-	left: 660px;
+	left: 650px;
 }
 
 span.backwardShown {
@@ -186,7 +186,7 @@ div.help-window {
 	-webkit-transition: all 1s ease-in-out;
 	background: white;
 	border: 1px solid #000000;
-	left: 148px;
+	left: 140px;
 	top: 28px;
 }
 
@@ -252,16 +252,19 @@ div.ranking-bar {
     background-repeat: no-repeat;
     background-size: contain;
     float: left;
-    height: 10px;
-    left: -159px;
     position: relative;
-    top: -180px;
-    width: 352px;
     transform: rotate(-90deg);
     -webkit-transform: rotate(-90deg);
     -moz-transform: rotate(-90deg);
     -ms-transform: rotate(-90deg);
     -o-transform: rotate(-90deg);
+}
+
+figure.back div.ranking-bar {
+    height: 10px;
+    left: -159px;
+    top: -180px;
+    width: 352px;
 }
 
 div.rank {
@@ -270,6 +273,10 @@ div.rank {
     font-size: 0.8em;
     text-align: right;
     width: 71%;
+}
+
+figure.back div.rank {
+	padding: 24px 10px;
 }
 
 .awful, .bad, .medium, .good {
@@ -289,9 +296,9 @@ div.position {
 	z-index: 10;
 	border-bottom: 1px solid #000000;
 	float: left;
-	height: 20px;
+	height: 36px;
 	left: -15px;
-	top: -30px;
+	top: -48px;
 }
 
 div.progress-front {
@@ -363,17 +370,90 @@ div.progress-back {
 	
 div.end {
 	background-color: white;
-	position: absolute;
-	top: 0;
-	left: 0;
 	z-index: 100;
 	display: none;
 	opacity: 0;
-	transition: transform 3s linear;
+	-moz-opacity: 0;
+	-webkit-opacity: 0;
+	transition: opacity 1s linear;
+	-moz-transition: opacity 1s linear;
+	-webkit-transition: opacity 1s linear;
 	padding: 2em;
+	width: 96%;
+	height: 90%;
+	padding: 2%;
 }
 
 div.end.active {
+	top: 0;
+	left: 0;
 	display: block;
+	position: absolute;
+	z-index: 200;
+}
+
+div.end.active:hover {
 	opacity: 1;
+	-moz-opacity: 1;
+	-webkit-opacity: 1;
+}
+
+@-keyframes div.end,
+@-moz-keyframes div.end,
+@-webkit-keyframes div.end {
+    0% {
+        display:none; 
+        opacity: 0;
+    }
+    1% {
+        display: block ; 
+        opacity: 0;
+    }
+    100% {
+        display: block ; 
+        opacity: 1;
+    }
+}
+
+div.end div.wrapper {
+	border: solid 1px #CCCCCC;
+	display: block;
+	padding: 0 4%;
+	width: 92%;
+	height: 100%;
+}
+
+div.end div.rank {
+	padding: 26px 10px; 
+	width: 93%;
+	text-align: center;
+}
+
+div.end div.rank span.rankText {
+	float: left;
+	width: 30%;
+	font-size: 1.5em;
+}
+
+div.end div.rank span.rankAward {
+	float: left;
+	width: auto;
+	text-align: left;
+	font-size: 1.2em;
+}
+	
+
+div.end div.ranking-bar {
+    height: 13px;
+    left: -136px;
+    top: -198px;
+    width: 383px;
+}
+
+div.end div.position {
+    width: 102%;
+}
+
+.back p button {
+	float: right;
 }
