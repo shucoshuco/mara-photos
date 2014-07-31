@@ -2,146 +2,36 @@
 <html lang="en" ng-app="maraPhotos">
     <head>
         <meta charset="utf-8">
-        <title>Mara - Fotografías</title>
+        <title>Supermamá</title>
         <link rel="stylesheet" href="css/main.css">
-        <script src="scripts/angular.min.js"></script>
-        <script src="scripts/date.js"></script>
-        <script src="scripts/photo-list.js"></script>
-        <script src="scripts/main.js"></script>
+        <script src="scripts/vendor/angular.min.js"></script>
+        <script src="scripts/vendor/date.js"></script>
+        <script src="scripts/utils.js"></script>
+        <script src="scripts/model/photo-list.js"></script>
+        <script src="scripts/model/word-list.js"></script>
+        <script src="scripts/model/ranks.js"></script>
+        <script src="scripts/controllers/menu-controller.js"></script>
+        <script src="scripts/controllers/photo-controller.js"></script>
+        <script src="scripts/vendor/audio5.js"></script>
+        <script src="scripts/controllers/audio-controller.js"></script>
+        <script src="scripts/modules.js"></script>
+        <script src="scripts/app.js"></script>
+        <script src="scripts/directives.js"></script>
     </head>
-    <body ng-controller="PhotoController">
-    <embed height="0" width="0" loop="true" src="media/back.mp3">
-    <div class="title">
-        <img src="img/nombre.png"/>
-        <span>Una (corta) vida en imágenes</span>
-        <div class="carrusel" ng-style="{'backgroundImage' : 'url(\'' + getBackgroundImage(random) + '\')'}" ng-animate=" 'animate' ">
-
-        </div>
-    </div>
-    <div class="intro" ng-show="showIntro">
-	    <img src="img/feliz.png"/>
-	    <p>
-		¡¡¡Feliz 26 cumpleaños amor mío!!! ¿O eran 16? Bueno, da lo mismo, lo importante es que sigamos 
-		cumpliendo años juntos
-	    </p>
-	    <p>
-		    Como no podía ser de otra manera, la temática del juego de este año esta clara. Tu premio será
-		    mayor cuanto mejor conozcas a tu hija. Creo que es un buen argumento para que, si sacas mala
-		    puntuación, te quedes sin regalo.
-	    </p>
-	    <p>
-		    A continuación aparecerán un listado de fotos de la ratijilla. Tu labor es adivinar exactamente
-		    la fecha en la que se hizo la foto. El número de días de error se irá acumulando y al final
-		    obtendrás una puntuación final. Cuanto más alta sea esa puntuación, mayor será el error cometido
-		    y, por lo tanto, peor el premio que te llevarás. ¿Entendido?
-	    </p>
-	    <p>
-	    	Mucha suerte. ¡¡¡ A jugar !!!
-	    </p>
-	    
-	    <button class="start" ng-click="start()"></button>
-    </div>
-<!--<input type="text" ng-model="current"/>
-{{getBackgroundImage(current)}}-->
-    <div class="main" ng-show="!showIntro">
-        <div class="photo" ng-style="{'backgroundImage' : 'url(\'' + getBackgroundImage(current) + '\')'}">
-            <span class="summary"><span>{{summary}}</span></span>
-            <span class="navigation backward" backwardable="updatePhoto(current)"></span>
-            <span class="navigation forward" forwardable="updatePhoto(current)"></span>
-        </div>
-        <section class="aside">
-            <div id="card" ng-class="showRanking">
-		    <figure class="front">
-			<form class="inputs" name="inputs">
-			    <img src="img/help.png" ng-click="toogleHelpWindow()"/>
-			    <div class="help-window" ng-style="{'width': help.width, 'height': help.height, 'left': help.left}">
-				<div>
-					<span>Fecha: <input ng-model="help.date"/></span>
-					<span>Meses: {{help.months}}</span>
-					<span>Días: {{help.days}}</span>
-				</div>
-			    </div>
-			    <h3>Tu elección</h3>
-			    <p>
-				<label for="months">Meses:</label>
-				<input type="text" id="months" ng-model="input.months" ng-disabled="formDisabled" required/>
-			    </p>
-			    <p>
-				<label for="days">Días:</label>
-				<input type="text" id="days" ng-model="input.days" ng-disabled="formDisabled" required/>
-			    </p>
-			    <p ng-show="images[current].done">
-				<label>Fecha:</label> {{result.selDate | date:'dd/MM/yyyy'}}
-			    </p>
-			    <p>
-				<button type="submit" ng-click="validate(current)" ng-disabled="formDisabled || inputs.$invalid">Comprobar</button>
-			    </p>
-			</form>
-			<div class="results" ng-show="images[current].done">
-			    <h3>Resultado</h3>
-			    <p>
-				<label>Fecha:</label> {{result.actualDate | date:'dd/MM/yyyy'}}
-			    </p>
-			    <p>
-				<label>Meses:</label> {{result.months}}
-				<br/>
-				<label>Días:</label> {{result.days}}
-			    </p>
-			    <p>
-				<label>Error: </label> {{result.diff}}
-			    </p>
-			</div>
-			<div class="scores">
-			    <h3>Puntuación</h3>
-			    <p>
-				<label>Puntos:</label> {{error}}
-			    </p>
-			    <div class="progress-front" ng-style="{'width': progressWidth + '%'}"></div>
-			    <div class="progress-back"></div>
-			</div>
-			<img class="flip" src="img/flip.png" flip="showRanking = 'flipped'"/>
-		    </figure>
-
-		    <figure class="back">
-			<h3>Ranking</h3>
-
-			<div class="rank" ng-repeat="rank in rankValues" ng-class="rank.className" ng-style="{'background-color': rank.color}">
-				{{rank.text}}
-			</div>
-			<div class="ranking-bar">
-			    
-			</div>
-			<div name="position" class="position" ng-style="{'top': -45 - (100 - progressWidth) * 352 / 100 + 'px'}">
-			    
-			</div>
-			<p>
-				<button ng-show="complete" ng-click="active = 'active'">Ver resultado</button>
-			</p>
-            		<img class="flip" src="img/flip.png" flip="showRanking = ''"/>
-		    </figure>
-            </div>
-        </section>
-    </div>
-    <div class="end" ng-class="active">
-	<div class="wrapper">
-	    <h3>Esta es tu posición en el ranking: {{rankValues[rankIndex].text}}</h3>
-	    <p>El premio que corresponde a este puesto es: {{rankValues[rankIndex].award}}</p>
-    	    <div class="rank" ng-repeat="rank in rankValues" ng-class="rank.className" ng-style="{'background-color': rank.color}"/>
-		<span class="rankText">{{rank.text}}</span>
-		<span class="rankAward">{{rank.award}}</span>
+    <body>
+	    <!--embed height="0" width="0" loop="true" src="media/back.mp3"-->
+	    <div class="title" ng-controller="MenuController">
+		<img src="img/nombre.png"/>
+		<span>Una supermamá en apuros</span>
+		<div class="carrusel" ng-style="{'backgroundImage' : 'url(\'' + imageName + '\')'}" ng-animate=" 'animate' ">
+		</div>
 	    </div>
-	    <div class="ranking-bar">
-		    
+	    <div class="menu">
+    		<a ng-href="/#/photos">Fotografías</a>
+    		<a ng-href="/#/words">Palabras</a>
 	    </div>
-	    <div name="position" class="position" ng-style="{'top': -48 - (100 - progressWidth) * 383 / 100 + 'px'}">
-			    
-	    </div>
-	</div>
+	    <div ng-view></div>
     </div>
-<audio controls>
-  	<source src="media/words/abre.mp3" type="audio/mp3">
-	Your browser does not support the audio element.
-</audio>
     </body>
 </html>
 

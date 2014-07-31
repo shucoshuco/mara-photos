@@ -1,4 +1,5 @@
 body {
+	min-width: 1250px;
 	background-color: #F1F1F1;
 }
 
@@ -55,7 +56,7 @@ div.intro p {
 	font-family: Monaco;
 }
 
-div.intro button.start {
+div.intro a.start {
 	display: block;
 	margin: auto;
 	width: 60px;
@@ -176,7 +177,7 @@ section.aside {
     -webkit-perspective: 800px;
 }
 
-div.help-window {
+div.help-window, div.warn-window {
 	position: absolute;
 	width: 0;
 	height: 0;
@@ -190,7 +191,23 @@ div.help-window {
 	top: 28px;
 }
 
-div.help-window div {
+div.warn-window {
+	color: red;
+}
+
+div.help-window.show {
+	width: 180px;
+	height: 85px;
+	left: -20px;
+}
+div.warn-window.show {
+	width: 160px;
+	height: 70px;
+	left: -10px;
+	top: 80px;
+}
+
+div.help-window div, div.warn-window div {
 	padding: 15px;
 }
 
@@ -230,21 +247,33 @@ button {
 	margin: auto;
 }
 
+p.result {
+	font-size: 1.5em;
+}
+
+p.ok {
+	color: green;
+}
+
+p.ko {
+	color: red;
+}
+
 div.results, div.scores {
     border-top: 1px solid #FFFFFF;
+}
+
+div.card-content {
+	height: 460px;
 }
 
 img.flip {
 	width: 16px;
 	height: 16px;
 	float: right;
-	position: relative;
-	left: 145px;
 	margin-bottom: 5px;
 	cursor: pointer;
 	clear: right;
-	position: absolute;
-	top: 475px;
 }
 
 div.ranking-bar {
@@ -253,11 +282,11 @@ div.ranking-bar {
     background-size: contain;
     float: left;
     position: relative;
-    transform: rotate(-90deg);
     -webkit-transform: rotate(-90deg);
     -moz-transform: rotate(-90deg);
     -ms-transform: rotate(-90deg);
     -o-transform: rotate(-90deg);
+    transform: rotate(-90deg);
 }
 
 figure.back div.ranking-bar {
@@ -305,10 +334,10 @@ div.progress-front {
     background: none repeat scroll 0 0 #F7F7F7;
     float: right;
     position: relative;
-    height: 5px;
-    top: 5px;
+    height: 6px;
+    top: 6px;
     width: 50%;
-    z-index: 10;
+    z-index: 20;
     border-radius: 0;
 }
 
@@ -319,6 +348,7 @@ div.progress-back {
     width: 100%;
     background-size: contain;
     margin-bottom: 1em;
+    z-index: 1;
 }
 
 #card {
@@ -345,6 +375,7 @@ div.progress-back {
 	box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
 	background: none repeat scroll 0 0 #FBFBFB;
 	padding: 0px 20px;
+	z-index: 10;
 }
 
 #card figure {
@@ -352,20 +383,20 @@ div.progress-back {
 	position: absolute;
 	width: 80%;
 	height: 100%;
-	backface-visibility: hidden;
 	-webkit-backface-visibility: hidden;
+	backface-visibility: hidden;
 	margin: 0;
 }
 
-#card .back {
+#card figure.back {
 	margin-bottom: 10px;
+	-webkit-transform: rotateY( 180deg  );
 	transform: rotateY( 180deg );
-	-webkit-transform: rotateY( 180deg );
 }
 
 #card.flipped {
-	transform: rotateY( 180deg );
 	-webkit-transform: rotateY( 180deg );
+	transform: rotateY( 180deg );
 }
 	
 div.end {

@@ -1,0 +1,17 @@
+﻿
+    <div class="end" ng-class="active">
+	<div class="wrapper">
+	    <h3>Esta es tu posición en el ranking: {{rankValues[rankIndex].text}}</h3>
+	    <p>El premio que corresponde a este puesto es: {{rankValues[rankIndex].award}}</p>
+    	    <div class="rank" ng-repeat="rank in rankValues" ng-class="rank.className" ng-style="{'background-color': rank.color}"/>
+		<span class="rankText">{{rank.text}}</span>
+		<span class="rankAward">{{rank.award}}</span>
+	    </div>
+	    <div class="ranking-bar">
+		    
+	    </div>
+	    <div name="position" class="position" ng-style="{'top': -48 - (100 - progressWidth) * 383 / 100 + 'px'}">
+			    
+	    </div>
+	</div>
+    </div>

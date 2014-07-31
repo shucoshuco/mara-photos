@@ -313,12 +313,6 @@ var images = [
 		done: false
 	},
 	{
-		name: "img/mara/DSC_0120-2.JPG",
-		takenDate: Date.parse("Jun 08th, 2013"),
-		error: 0,
-		done: false
-	},
-	{
 		name: "img/mara/DSC_0250.JPG",
 		takenDate: Date.parse("Jul 06th, 2013"),
 		error: 0,

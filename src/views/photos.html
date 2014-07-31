@@ -1,0 +1,83 @@
+﻿
+<div class="main">
+	<div class="photo" ng-style="{'backgroundImage' : 'url(\'' + images[current].name + '\')'}">
+	    <span class="summary"><span>{{summary}}</span></span>
+	    <span class="navigation backward" backwardable click="updatePhoto(current)" elements="images"></span>
+	    <span class="navigation forward" forwardable click="updatePhoto(current)" elements="images"></span>
+	</div>
+	<section class="aside">
+	    <div id="card" ng-class="{flipped: showRanking}">
+		<figure class="front">
+		    <div class="card-content">
+			<form class="inputs" name="inputs">
+			    <img src="img/help.png" ng-click="toogleHelpWindow()"/>
+			    <div class="help-window" ng-class="{show: help.shown}">
+				<div>
+					<span>Fecha: <input ng-model="help.date"/></span>
+					<span>Meses: {{help.months}}</span>
+					<span>Días: {{help.days}}</span>
+				</div>
+			    </div>
+			    <h3>Tu elección</h3>
+			    <p>
+				<label for="months">Meses:</label>
+				<input type="text" id="months" ng-model="input.months" ng-disabled="formDisabled" required/>
+			    </p>
+			    <p>
+				<label for="days">Días:</label>
+				<input type="text" id="days" ng-model="input.days" ng-disabled="formDisabled" required/>
+			    </p>
+			    <p ng-show="images[current].done">
+				<label>Fecha:</label> {{result.selDate | date:'dd/MM/yyyy'}}
+			    </p>
+			    <p>
+				<button type="submit" ng-click="validate(current)" ng-disabled="formDisabled || inputs.$invalid">Comprobar</button>
+			    </p>
+			</form>
+			<div class="results" ng-show="images[current].done">
+			    <h3>Resultado</h3>
+			    <p>
+				<label>Fecha:</label> {{result.actualDate | date:'dd/MM/yyyy'}}
+			    </p>
+			    <p>
+				<label>Meses:</label> {{result.months}}
+				<br/>
+				<label>Días:</label> {{result.days}}
+			    </p>
+			    <p>
+				<label>Error: </label> {{result.diff}}
+			    </p>
+			</div>
+			<div class="scores">
+			    <h3>Puntuación</h3>
+			    <p>
+				<label>Puntos:</label> {{error}}
+			    </p>
+			    <div class="progress-front" ng-style="{'width': progressWidth + '%'}"></div>
+			    <div class="progress-back"></div>
+			</div>
+		    </div>
+		    <img class="flip" src="img/flip.png" ng-click="showRanking = true"/>
+		</figure>
+
+		<figure class="back">
+		    <div class="card-content">
+			<h3>Ranking</h3>
+			<div class="rank" ng-repeat="rank in rankValues" ng-class="rank.className" ng-style="{'background-color': rank.color}">
+				{{rank.text}}
+			</div>
+			<div class="ranking-bar">
+
+			</div>
+			<div name="position" class="position" ng-style="{'top': -45 - (100 - progressWidth) * 352 / 100 + 'px'}">
+
+			</div>
+			<p>
+				<button ng-show="complete" ng-click="active = 'active'">Ver resultado</button>
+			</p>
+		    </div>
+		    <img class="flip" src="img/flip.png" ng-click="showRanking = false"/>
+		</figure>
+	   </div>
+	</section>
+</div>
