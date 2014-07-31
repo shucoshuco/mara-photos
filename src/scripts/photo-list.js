@@ -175,12 +175,6 @@ var images = [
 		done: false
 	},
 	{
-		name: "img/mara/DSC_0071.JPG",
-		takenDate: Date.parse("Jan 07th, 2013"),
-		error: 0,
-		done: false
-	},
-	{
 		name: "img/mara/DSC_0153.JPG",
 		takenDate: Date.parse("Dec 24th, 2012"),
 		error: 0,
@@ -231,12 +225,6 @@ var images = [
 	{
 		name: "img/mara/DSC_0291.JPG",
 		takenDate: Date.parse("Jan 19th, 2013"),
-		error: 0,
-		done: false
-	},
-	{
-		name: "img/mara/DSC_0074-2.JPG",
-		takenDate: Date.parse("Jan 12th, 2013"),
 		error: 0,
 		done: false
 	},
@@ -369,60 +357,6 @@ var images = [
 	{
 		name: "img/mara/MB_DSC_0037.JPG",
 		takenDate: Date.parse("Nov 23th, 2012"),
-		error: 0,
-		done: false
-	},
-	{
-		name: "img/mara/IMG-20130215-WA0001.JPG",
-		takenDate: Date.parse("Feb 15th, 2013"),
-		error: 0,
-		done: false
-	},
-	{
-		name: "img/mara/IMG-20130610-WA0001.JPG",
-		takenDate: Date.parse("Jun 10th, 2013"),
-		error: 0,
-		done: false
-	},
-	{
-		name: "img/mara/IMG-20130227-WA0001.JPG",
-		takenDate: Date.parse("Feb 27th, 2013"),
-		error: 0,
-		done: false
-	},
-	{
-		name: "img/mara/IMG-20130312-WA0001.JPG",
-		takenDate: Date.parse("Mar 12th, 2013"),
-		error: 0,
-		done: false
-	},
-	{
-		name: "img/mara/IMG-20130213-WA0001.JPG",
-		takenDate: Date.parse("Feb 13th, 2013"),
-		error: 0,
-		done: false
-	},
-	{
-		name: "img/mara/IMG-20130130-WA0001.JPG",
-		takenDate: Date.parse("Jan 30th, 2013"),
-		error: 0,
-		done: false
-	},
-	{
-		name: "img/mara/IMG-20130112-WA0001.JPG",
-		takenDate: Date.parse("Jan 12th, 2013"),
-		error: 0,
-		done: false
-	},
-	{
-		name: "img/mara/IMG-20130622-WA0002.JPG",
-		takenDate: Date.parse("Jun 22th, 2013"),
-		error: 0,
-		done: false
-	},
-	{
-		name: "img/mara/IMG-20121210-WA000.JPG",
-		takenDate: Date.parse("Dec 10th, 2012"),
 		error: 0,
 		done: false
 	}

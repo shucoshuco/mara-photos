@@ -4,10 +4,10 @@
         <meta charset="utf-8">
         <title>Mara - Fotografías</title>
         <link rel="stylesheet" href="css/main.css">
-        <script src="lib/angular.min.js"></script>
-        <script src="lib/date.js"></script>
-        <script src="lib/photo-list.js"></script>
-        <script src="lib/main.js"></script>
+        <script src="scripts/angular.min.js"></script>
+        <script src="scripts/date.js"></script>
+        <script src="scripts/photo-list.js"></script>
+        <script src="scripts/main.js"></script>
     </head>
     <body ng-controller="PhotoController">
     <embed height="0" width="0" loop="true" src="media/back.mp3">
@@ -74,7 +74,7 @@
 				<label>Fecha:</label> {{result.selDate | date:'dd/MM/yyyy'}}
 			    </p>
 			    <p>
-				<button type="submit" validate="updatePhoto(current)" ng-disabled="formDisabled || inputs.$invalid">Comprobar</button>
+				<button type="submit" ng-click="validate(current)" ng-disabled="formDisabled || inputs.$invalid">Comprobar</button>
 			    </p>
 			</form>
 			<div class="results" ng-show="images[current].done">
@@ -138,6 +138,10 @@
 	    </div>
 	</div>
     </div>
+<audio controls>
+  	<source src="media/words/abre.mp3" type="audio/mp3">
+	Your browser does not support the audio element.
+</audio>
     </body>
 </html>
 

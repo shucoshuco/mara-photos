@@ -128,9 +128,45 @@ app.controller("PhotoController", function($scope, $timeout) {
 		}
 	}
 
+	$scope.validate = function(current) {
+
+		var image = $scope.images[current];
+
+		var ref = image.takenDate;
+
+		var sel = baseDate.clone();
+		sel.addMonths(parseInt($scope.input.months));
+		sel.addDays(parseInt($scope.input.days));
+
+		var doubleDiff = Math.abs(sel.getTime() - ref.getTime()) / (1000 * 60 * 60 * 24);
+		var diff = Math.floor(doubleDiff);
+
+		var refMonths = calculateMonthsBetweenDates(baseDate, ref);
+		var refDays  = calculateDaysBetweenDates(baseDate, ref);
+
+		image.done = true;
+		image.selection = {
+			date: sel,
+			months: $scope.input.months,
+			days: $scope.input.days
+		};
+		image.result = {
+			months: refMonths,
+			days: refDays,
+			diff: diff
+		};
+
+		$scope.error += diff;
+
+		$scope.updatePhoto(current);
+
+		if ($scope.current == $scope.images.length - 1)
+			$scope.complete = true;
+	}
+
 	$scope.$watch('help.date', function(newValue) {
 		if (newValue.match('..\\/..\\/....')) {
-			var d = Date.parse(newValue);
+			var d = parseDate(newValue);
 			if (d) {
 				$scope.help.months = calculateMonthsBetweenDates(baseDate, d);
 				$scope.help.days = calculateDaysBetweenDates(baseDate, d);
@@ -209,6 +245,13 @@ app.directive("forwardable", function() {
 	}
 })
 
+function parseDate(date) {
+	var parts = date.split("/");
+	return new Date(parseInt(parts[2], 10),
+                  	parseInt(parts[1], 10) - 1,
+                  	parseInt(parts[0], 10));
+}
+
 function calculateMonthsBetweenDates(d1, d2) {
     var months;
     months = (d2.getFullYear() - d1.getFullYear()) * 12;
@@ -228,49 +271,6 @@ function calculateDaysBetweenDates(d1, d2) {
 
     return Date.getDaysInMonth(prevYear, prevMonth) - d1.getDate() + d2.getDate();
 }
-
-app.directive("validate", function() {
-	return {
-		link: function(scope, element, attrs) {
-			element.bind("click", function() {
-
-				var image = scope.images[scope.current];
-
-				var ref = image.takenDate;
-
-				var sel = baseDate.clone();
-				sel.addMonths(parseInt(scope.input.months));
-				sel.addDays(parseInt(scope.input.days));
-
-				var doubleDiff = Math.abs(sel.getTime() - ref.getTime()) / (1000 * 60 * 60 * 24);
-				var diff = Math.floor(doubleDiff);
-
-				var refMonths = calculateMonthsBetweenDates(baseDate, ref);
-				var refDays  = calculateDaysBetweenDates(baseDate, ref);
-
-				image.done = true;
-				image.selection = {
-					date: sel,
-					months: scope.input.months,
-					days: scope.input.days
-				};
-				image.result = {
-					months: refMonths,
-					days: refDays,
-					diff: diff
-				};
-
-				scope.error += diff;
-
-				scope.$apply(attrs.validate);
-
-				if (scope.current == scope.images.length - 1)
-					scope.complete = true;
-
-			});
-		}
-	}
-});
 
 app.directive("flip", function() { 
 	return {
