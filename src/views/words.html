@@ -1,17 +1,11 @@
 ﻿
 <div class="main">
-	<div class="photo">
+	<div class="words">
 	    <span class="summary"><span>{{summary}}</span></span>
+	    <button class="play" ng-click="play()"></button>
+            <img src="../img/bebe.gif" class="bebe" ng-show="playing"/>
 	    <span class="navigation backward" backwardable click="updateAudio(current)" elements="audios"></span>
 	    <span class="navigation forward" forwardable click="updateAudio(current)" elements="audios"></span>
-	    <!--Sending commands to audio5js-->
-	    <button ng-click="player.play()">Play/Pause</button>
-	    <!--Variables example-->
-	    <span class="ng-binding">Duración: {{player.duration}}</span>
-
-	    <div style="font-size:12px;">
-	    	Filename : {{audios[current].name}}<br>
-	    </div>
 	</div>
 	<section class="aside">
 	    <div id="card" ng-class="{flipped: showRanking}">

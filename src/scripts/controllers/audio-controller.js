@@ -11,6 +11,8 @@ function AudioController($scope, $timeout, AudioService) {
 	$scope.progressWidth = "0";
 	$scope.rankValues = rankValues;
 	$scope.complete = false;
+	$scope.playing = false;
+	$scope.progress = 0;
 
 	$scope.updateAudio = function(n) {
 		$scope.summary = (n + 1) + ' / ' + $scope.audios.length;
@@ -23,6 +25,15 @@ function AudioController($scope, $timeout, AudioService) {
     		//Load the song, every event, class method and Instance attribute from audio5js are accessible from the template
     		$scope.player.load($scope.audios[n].name);
 	}
+
+	$scope.play = function() {
+		$scope.playing = true;
+		$scope.player.play();
+	};
+
+	$scope.player.on("ended", function() {
+		$scope.playing = false;
+	});
 
 	$scope.validate = function(current) {
 

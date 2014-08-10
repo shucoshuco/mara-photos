@@ -10,5 +10,6 @@ app.config(function($routeProvider) {
 		.when('/', {controller:PhotoController, templateUrl:'views/intro.html'})
 		.when('/photos', {controller:PhotoController, templateUrl:'views/photos.html'})
 		.when('/words', {controller:AudioController, templateUrl:'views/words.html'})
+		.when('/score', {controller:AudioController, templateUrl:'views/prize.html'})
 		.otherwise({redirectTo: '/'});
 });

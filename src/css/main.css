@@ -1,6 +1,7 @@
 body {
 	min-width: 1250px;
 	background-color: #F1F1F1;
+	font-size: 16px;
 }
 
 div {
@@ -103,7 +104,29 @@ div.title div.carrusel {
 	background-color: black;
 }
 
-div.photo {
+div.menu a {
+	background-image: url('../img/button.jpg');
+	width: 100px;
+	height: 23px;
+	float: left;
+	text-align: center;
+	vertical-align: middle;
+	margin: auto;
+	text-decoration: none;
+	color: white;
+	background-size: contain;
+	background-repeat: no-repeat;
+	border-radius: 7px;
+	margin-right: 2em;
+	margin-bottom: 0.5em;
+	padding: 0.6em;
+}
+
+div.menu a:hover {
+	color: red;
+}
+
+div.photo, div.words {
 	float: left;
 	width: 760px;
 	height: 550px;
@@ -111,6 +134,29 @@ div.photo {
 	background-repeat: no-repeat;
 	background-position: center;
 	transition: transform 1s;
+}
+
+div.words {
+	background-image: url('../img/words.jpg');
+}
+
+button.play {
+    background-image: url("../img/play.png");
+    background-position: left center;
+    background-repeat: no-repeat;
+    background-size: inherit;
+    height: 100px;
+    left: 318px;
+    position: absolute;
+    top: 230px;
+    width: 142px;
+    border-radius: 35px;
+}
+
+img.bebe {
+    position: absolute;
+    left: 900px;
+    top: 230px;
 }
 
 span.summary {
@@ -400,18 +446,11 @@ div.progress-back {
 }
 	
 div.end {
+	float: left;
+	width: 940px;
+	height: 490px;
 	background-color: white;
-	z-index: 100;
-	display: none;
-	opacity: 0;
-	-moz-opacity: 0;
-	-webkit-opacity: 0;
-	transition: opacity 1s linear;
-	-moz-transition: opacity 1s linear;
-	-webkit-transition: opacity 1s linear;
 	padding: 2em;
-	width: 96%;
-	height: 90%;
 	padding: 2%;
 }
 
@@ -454,8 +493,12 @@ div.end div.wrapper {
 	height: 100%;
 }
 
+div.end div.wrapper p {
+	margin-bottom: 3em;
+}
+
 div.end div.rank {
-	padding: 26px 10px; 
+	padding: 20px 10px; 
 	width: 93%;
 	text-align: center;
 }
@@ -468,7 +511,7 @@ div.end div.rank span.rankText {
 
 div.end div.rank span.rankAward {
 	float: left;
-	width: auto;
+	width: 69%;
 	text-align: left;
 	font-size: 1.2em;
 }
@@ -476,9 +519,9 @@ div.end div.rank span.rankAward {
 
 div.end div.ranking-bar {
     height: 13px;
-    left: -136px;
-    top: -198px;
-    width: 383px;
+    left: -129px;
+    top: -175px;
+    width: 338px;
 }
 
 div.end div.position {
