@@ -1,12 +1,14 @@
-function PhotoController($scope, $timeout) {
+function PhotoController($scope, $timeout, $rootScope) {
 
-	$scope.images = shuffle(images);
+	images = images || shuffle(imgs)
+
+	$scope.images = images;
 	$scope.current = n;
 	$scope.input = {months: 1, days: 2};
 	$scope.selection = {};
 	$scope.result = {};
-	$scope.errorLimit = errorLimit;
-	$scope.error = error;
+	$scope.errorLimit = errorPhotosLimit;
+	$scope.error = errorPhotos;
 	$scope.showRanking = false;
 	$scope.progressWidth = "100";
 	$scope.help = {
@@ -16,7 +18,6 @@ function PhotoController($scope, $timeout) {
 		days: ""
 	};
 	$scope.rankValues = rankValues;
-	$scope.complete = false;
 
 	$scope.updatePhoto = function(n) {
 		$scope.summary = (n + 1) + ' / ' + $scope.images.length;
@@ -86,20 +87,17 @@ function PhotoController($scope, $timeout) {
 		};
 
 		$scope.error += diff;
-		error = $scope.error
+		if ($scope.error > $scope.errorLimit) {
+			$scope.error = $scope.errorLimit;
+		}
+		errorPhotos = $scope.error;
 
 		$scope.updatePhoto(current);
 
 		if ($scope.current == $scope.images.length - 1)
-			$scope.complete = true;
+			$rootScope.$emit('finishStep');
 
-		if ($scope.error > errorLimit) {
-			$scope.progressWidth = 0;
-			$scope.rankIndex = 0;
-		} else {
-			$scope.progressWidth = 100 - $scope.error * 100 / errorLimit;
-			$scope.rankIndex = $scope.rankValues.length - (Math.floor($scope.error * $scope.rankValues.length / $scope.errorLimit) + 1);
-		}
+		$scope.progressWidth = 100 - $scope.error * 100 / $scope.errorLimit;
 	}
 
 	$scope.$watch('help.date', function(newValue) {

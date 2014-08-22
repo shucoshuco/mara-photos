@@ -4,6 +4,10 @@ body {
 	font-size: 16px;
 }
 
+h1 {
+	text-align: center;
+}
+
 div {
 	border-radius: 5px;
 }
@@ -29,15 +33,20 @@ div.intro, div.main {
     width: 76%;
 }
 
+div.intro {
+    height: 515px;
+}
+
+div.makingOff {
+    height: 515px;
+    background-image: url('../img/making-off.jpg');
+}
+
 div.intro img {
 	display: block;
-	width: 700px;
-	height: 165px;
+	width: 680px;
+	height: 245px;
 	margin: auto;
-    	-moz-animation: spin 10s infinite linear;
-    	-webkit-animation: spin 10s infinite linear;
-    	animation: spin 10s infinite linear;
-	
 }
 
 @-moz-keyframes spin {
@@ -57,11 +66,21 @@ div.intro p {
 	font-family: Monaco;
 }
 
+div.intro a.next {
+	width: 60px;
+	height: 60px;
+	background: url('../img/next.png') no-repeat left;
+	background-size: contain;
+	border: none;
+	cursor: pointer;
+	float: right;
+}
+
 div.intro a.start {
 	display: block;
 	margin: auto;
-	width: 60px;
-	height: 60px;
+	width: 121px;
+	height: 120px;
 	background: url('../img/start.png') no-repeat center;
 	background-size: contain;
 	border: none;
@@ -140,8 +159,7 @@ div.words {
 	background-image: url('../img/words.jpg');
 }
 
-button.play {
-    background-image: url("../img/play.png");
+button.play, button.pause {
     background-position: left center;
     background-repeat: no-repeat;
     background-size: inherit;
@@ -151,6 +169,14 @@ button.play {
     top: 230px;
     width: 142px;
     border-radius: 35px;
+}
+
+button.play {
+    background-image: url("../img/play.png");
+}
+
+button.pause {
+    background-image: url("../img/pause.png");
 }
 
 img.bebe {
@@ -494,11 +520,15 @@ div.end div.wrapper {
 }
 
 div.end div.wrapper p {
+	margin-bottom: 2em;
+}
+
+div.end div.wrapper h4 {
 	margin-bottom: 3em;
 }
 
 div.end div.rank {
-	padding: 20px 10px; 
+	padding: 10px 10px; 
 	width: 93%;
 	text-align: center;
 }
@@ -519,15 +549,62 @@ div.end div.rank span.rankAward {
 
 div.end div.ranking-bar {
     height: 13px;
-    left: -129px;
-    top: -175px;
-    width: 338px;
+    left: -69px;
+    top: -115px;
+    width: 220px;
 }
 
 div.end div.position {
     width: 102%;
+    border-radius: 0;
 }
 
 .back p button {
 	float: right;
+}
+
+ul.matches {
+	position: absolute;
+	z-index: 30;
+	overflow: hidden;
+	transition: all 1s ease-in-out;
+	-webkit-transition: all 1s ease-in-out;
+	background: white;
+	left: 62px;
+	top: 62px;
+	border-radius: 10px;
+	list-style-type: none;
+	padding: 1em;
+	border: 1px solid #000000;
+}
+
+ul.matches li {
+	cursor: pointer;
+}
+
+
+ul.playList li {
+	display: inline;
+	float: left;
+	width: 33%;
+	height: 4em;
+}
+
+ul.playList li span {
+	float: left;
+	margin-top: 3px;
+	cursor: pointer;
+	font-weight: bold;
+	font-size: x-large;
+	color: green;
+}
+
+ul.playList li button {
+	position: static;
+	width: 48px;
+	height: 30px;
+	float: left;
+	margin-right: 1em;
+	cursor: pointer;
+	background-size: cover;
 }

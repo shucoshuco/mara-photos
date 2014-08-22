@@ -1,4 +1,4 @@
-var images = [
+var imgs = [
 	{
 		name: "img/Chrysanthemum.jpg",
 		takenDate: Date.parse("Dec 25th, 2012"),
@@ -49,3 +49,4 @@ var images = [
 	}
 ];
 
+var images = false;

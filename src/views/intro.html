@@ -1,24 +1,90 @@
-﻿
-<div class="intro">
+﻿<div class="intro" ng-show="step == 1">
     <img src="img/feliz.png"/>
     <p>
-	¡¡¡Feliz 26 cumpleaños amor mío!!! ¿O eran 16? Bueno, da lo mismo, lo importante es que sigamos 
-	cumpliendo años juntos
+	¡¡¡¡¡Feliz cumpleaños mi amor!!! Otro añito que cumples a mi lado. Vamos escribiendo capítulos de
+	nuestra historia juntos y espero que todos sean tan felices como este último.
     </p>
     <p>
-	    Como no podía ser de otra manera, la temática del juego de este año esta clara. Tu premio será
-	    mayor cuanto mejor conozcas a tu hija. Creo que es un buen argumento para que, si sacas mala
-	    puntuación, te quedes sin regalo.
+	Está claro que no todo ha sido perfecto. Hemos discutido, peleado, luchado con Mara en sus mejores
+	momentos... Pero qué quieres que te diga yo miro atrás y sonrío al pensar en todas esas cosas, y más
+	aún en todos los buenos ratos que hemos pasado juntos.
+    </p>
+    <p><b>Te quiero con locura</b></p>
+    <a class="next" ng-click="nextStep()"></a>
+</div>
+
+<div class="intro" ng-show="step == 2">
+    <p>
+	Y ahora al lío del cumpleaños.
     </p>
     <p>
-	    A continuación aparecerán un listado de fotos de la ratijilla. Tu labor es adivinar exactamente
-	    la fecha en la que se hizo la foto. El número de días de error se irá acumulando y al final
-	    obtendrás una puntuación final. Cuanto más alta sea esa puntuación, mayor será el error cometido
-	    y, por lo tanto, peor el premio que te llevarás. ¿Entendido?
+	Sé que el año pasado no terminaste muy contenta con el resultado del juego, así que he decidido darte
+	una segunda oportunidad.
     </p>
     <p>
-	Mucha suerte. ¡¡¡ A jugar !!!
+	Sin embargo, ya sabes que dicen que los problemas crecen al mismo ritmo que
+        los hijos. Así que, doble de años, doble de complejidad. No, no soy tan cutre como para repetir el
+        mismo juego. Solo lo suficiente como para repetir la mitad.
+    </p>
+    <p>
+	Así que sí, la primera mitad del juego vuelve a ser la misma que el año pasado. Te saldrán un listado de
+	fotos de Mara y tienes que adivinar exactamente la fecha en la que fueron hechas. El error que cometas
+        en número de días se irá sumando y al final conseguirás una puntuación parcial y un ranking de esta primera
+	parte.
+    </p>
+    <p>
+	He actualizado las fotos, quitado muchas y añadido otras muchas de este año. Como el año pasado quizás fuera
+	excesivamente dificil, te lo he puesto más fácil y he subido bastante el margen de error. Así que, como poco,
+	me merezco un beso que espero me hayas dado antes de leer esta <b>palabra</b>.
     </p>
     
-    <a class="start" ng-href="/#/photos"></a>
+    <a class="next" ng-click="nextStep()"></a>
+</div>
+<div class="intro" ng-show="step == 3">
+    <p>
+	Sin embargo, esta vez el juego no termina ahí. La ratija ha crecido, y ya hace mucho más que posar para las fotos.
+    </p>
+    <p>
+	En concreto habla. Y mucho. En cuestión de meses se ha lanzado a decir, en su propio idioma, un montón de palabras.
+	Palabras que absolutamente nadie entiende... excepto su madre. Todas las madres tienen un don especial para
+	entender a sus hijos, así que te ha llegado la hora de demostrar que tú también lo posees.
+    </p>
+    <p>
+	La segunda mitad del juego te mostrará un listado de audios con palabras dichas por Mara. Tu labor es simplemente
+	entender a tu hija y saber qué está diciendo en cada momento. Tengo que reconocer que es mucho más difícil de lo
+	que pensé en un inicio.
+    </p>
+    <p>
+	Como no soy tan malo, no vas a ir totalmente a ciegas. Cuando introduzcas una palabra te saldrá un listado de
+	posibles respuestas con esas letras. Nunca vas a poder meter una palabra que no está en el listado. Si por
+	ejemplo pones las letras "tel" y en el listado de palabras estuvieran solo "Televisión", "Teléfono" y "Moscatel"
+	te saldrían esas tres opciones.
+    </p>
+    <p>
+	Es una pequeña ayuda, pero no te confíes.
+    </p>
+    
+    <a class="next" ng-click="nextStep()"></a>
+</div>
+<div class="intro" ng-show="step == 4">
+    <p>
+	Como en la primera parte, irás sumando los errores que cometas y al final obtendrás una puntuación parcial que,
+	sumada a la de la primera parte harán tu puntuación total y el ranking en el que estás.
+    </p>
+    <p>
+	Los rankings son los mismos que los del año pasado. Los premios, no obstante, no son materiales: En función de
+	tu posición en el ranking te ganarás días de libertad en los que yo me ocuparé de todo con Mara. A mejor ranking,
+	más días.
+    </p>
+    <p>
+	Y eso es todo. Como estoy delante me puedes preguntar cualquier cosa. Espero que la aplicación funcione mejor
+	que el año pasado aunque no lo garantizo, porque como siempre me ha pillado el toro.
+    </p>
+    <p>
+	Nada más. me despido con un enorme
+    </p>
+    <h1>Te quiero muchísimo mi amor</h1>
+    <h1>¡¡¡¡¡¡A jugar!!!!!!</h1>
+    
+    <a class="start" ng-click="finishIntro()"></a>
 </div>

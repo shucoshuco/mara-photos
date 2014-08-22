@@ -10,26 +10,32 @@
         <script src="scripts/model/photo-list.js"></script>
         <script src="scripts/model/word-list.js"></script>
         <script src="scripts/model/ranks.js"></script>
+        <script src="scripts/model/makingOff-list.js"></script>
+        <script src="scripts/controllers/intro-controller.js"></script>
         <script src="scripts/controllers/menu-controller.js"></script>
         <script src="scripts/controllers/photo-controller.js"></script>
         <script src="scripts/vendor/audio5.js"></script>
         <script src="scripts/controllers/audio-controller.js"></script>
+        <script src="scripts/controllers/score-controller.js"></script>
+        <script src="scripts/controllers/makingOff-controller.js"></script>
         <script src="scripts/modules.js"></script>
         <script src="scripts/app.js"></script>
         <script src="scripts/directives.js"></script>
     </head>
-    <body>
+    <body ng-controller="MenuController">
 	    <!--embed height="0" width="0" loop="true" src="media/back.mp3"-->
-	    <div class="title" ng-controller="MenuController">
+	    <div class="title">
 		<img src="img/nombre.png"/>
 		<span>Una supermamá en apuros</span>
 		<div class="carrusel" ng-style="{'backgroundImage' : 'url(\'' + imageName + '\')'}" ng-animate=" 'animate' ">
 		</div>
 	    </div>
 	    <div class="menu">
-    		<a ng-href="/#/photos">Fotografías</a>
-    		<a ng-href="/#/words">Palabras</a>
-    		<a ng-href="/#/score">Resultado</a>
+    		<a ng-href="/#/intro" ng-show="globalStep >= 0">Introducción</a>
+    		<a ng-href="/#/photos" ng-show="globalStep >= 1">Fotografías</a>
+    		<a ng-href="/#/words" ng-show="globalStep >= 2">Palabras</a>
+    		<a ng-href="/#/score" ng-show="globalStep >= 3">Resultado</a>
+    		<a ng-href="/#/making" ng-show="globalStep >= 3">Making off</a>
 	    </div>
 	    <div class="view" ng-view></div>
     </div>

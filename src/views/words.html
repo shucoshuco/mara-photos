@@ -2,10 +2,11 @@
 <div class="main">
 	<div class="words">
 	    <span class="summary"><span>{{summary}}</span></span>
-	    <button class="play" ng-click="play()"></button>
-            <img src="../img/bebe.gif" class="bebe" ng-show="playing"/>
 	    <span class="navigation backward" backwardable click="updateAudio(current)" elements="audios"></span>
 	    <span class="navigation forward" forwardable click="updateAudio(current)" elements="audios"></span>
+	    <button class="play" ng-click="play()"></button>
+            <img src="../img/bebe.gif" class="bebe" ng-show="playing"/>
+	    <p>{{audios[current].name}}</p>
 	</div>
 	<section class="aside">
 	    <div id="card" ng-class="{flipped: showRanking}">
@@ -17,15 +18,23 @@
 				<label for="word">Palabra:</label>
 				<input type="text" id="word" ng-model="selectedWord" ng-disabled="formDisabled" required/>
 			    </p>
-			    <ul class="matches">
+			    <ul class="matches" ng-show="matches.length > 0">
 			    	<li ng-repeat="match in matches" ng-click="selectWord(match)">{{match}}</li>
 			    </ul>
 			    <p>
 				<button type="submit" ng-click="validate(current)" ng-disabled="formDisabled || wrongWord || inputs.$invalid">Comprobar</button>
 			    </p>
 			</form>
+			<div class="results" ng-show="tries < 3">
+			    <h3>Resultado</h3>
+			    <p class="result ko">
+				¡¡Fallaste!!
+			    </p>
+			    <p>Te quedan {{tries}} intentos</p>
+			</div>
 			<div class="results" ng-show="audios[current].done">
 			    <h3>Resultado</h3>
+			    <p ng-show="!audios[current].ok">Ya no te quedan más intentos</p>
 			    <p>
 				<label>Palabra:</label> {{audios[current].word[0]}}
 			    </p>
@@ -39,7 +48,7 @@
 			<div class="scores">
 			    <h3>Puntuación</h3>
 			    <p>
-				<label>Puntos:</label> {{right}}
+				<label>Errores:</label> {{error}}
 			    </p>
 			    <div class="progress-front" ng-style="{'width': progressWidth + '%'}"></div>
 			    <div class="progress-back"></div>
@@ -60,9 +69,6 @@
 			<div name="position" class="position" ng-style="{'top': -45 - (100 - progressWidth) * 352 / 100 + 'px'}">
 
 			</div>
-			<p>
-				<button ng-show="complete" ng-click="active = 'active'">Ver resultado</button>
-			</p>
 		    </div>
 		    <img class="flip" src="img/flip.png" ng-click="showRanking = false"/>
 		</figure>

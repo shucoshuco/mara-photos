@@ -1,5 +1,5 @@
 ﻿
-var audios = [
+var words = [
 	{
 		name: "media/words/abre.mp3",
 		word: ["Abre"],
@@ -9,6 +9,12 @@ var audios = [
 	{
 		name: "media/words/abu.mp3",
 		word: ["Abu"],
+		ok: false,
+		done: false
+	},
+	{
+		name: "media/words/adios.mp3",
+		word: ["Adiós"],
 		ok: false,
 		done: false
 	},
@@ -43,8 +49,14 @@ var audios = [
 		done: false
 	},
 	{
-		name: "media/words/aqui.mp3",
-		word: ["Aquí"],
+		name: "media/words/ascensor.mp3",
+		word: ["Ascensor"],
+		ok: false,
+		done: false
+	},
+	{
+		name: "media/words/autobus.mp3",
+		word: ["Autobús"],
 		ok: false,
 		done: false
 	},
@@ -85,8 +97,20 @@ var audios = [
 		done: false
 	},
 	{
+		name: "media/words/camion.mp3",
+		word: ["Camión"],
+		ok: false,
+		done: false
+	},
+	{
 		name: "media/words/cereales.mp3",
 		word: ["Cereales"],
+		ok: false,
+		done: false
+	},
+	{
+		name: "media/words/ciao.mp3",
+		word: ["Ciao"],
 		ok: false,
 		done: false
 	},
@@ -171,6 +195,12 @@ var audios = [
 	{
 		name: "media/words/hector.mp3",
 		word: ["Héctor"],
+		ok: false,
+		done: false
+	},
+	{
+		name: "media/words/hola.mp3",
+		word: ["Hola"],
 		ok: false,
 		done: false
 	},
@@ -289,6 +319,12 @@ var audios = [
 		done: false
 	},
 	{
+		name: "media/words/oye.mp3",
+		word: ["Oye"],
+		ok: false,
+		done: false
+	},
+	{
 		name: "media/words/pajaroto.mp3",
 		word: ["Pajaroto"],
 		ok: false,
@@ -349,6 +385,12 @@ var audios = [
 		done: false
 	},
 	{
+		name: "media/words/salchichas.mp3",
+		word: ["Salchichas"],
+		ok: false,
+		done: false
+	},
+	{
 		name: "media/words/si.mp3",
 		word: ["Si"],
 		ok: false,
@@ -361,6 +403,12 @@ var audios = [
 		done: false
 	},
 	{
+		name: "media/words/tesoro.mp3",
+		word: ["Tesoro"],
+		ok: false,
+		done: false
+	},
+	{
 		name: "media/words/teta.mp3",
 		word: ["Teta"],
 		ok: false,
@@ -369,6 +417,12 @@ var audios = [
 	{
 		name: "media/words/tia.mp3",
 		word: ["Tía"],
+		ok: false,
+		done: false
+	},
+	{
+		name: "media/words/tractor.mp3",
+		word: ["Tractor"],
 		ok: false,
 		done: false
 	},
@@ -397,3 +451,5 @@ var audios = [
 		done: false
 	}
 ]
+
+var audios = false;

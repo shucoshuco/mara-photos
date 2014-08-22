@@ -51,7 +51,7 @@
 			<div class="scores">
 			    <h3>Puntuación</h3>
 			    <p>
-				<label>Puntos:</label> {{error}}
+				<label>Errores:</label> {{error}}
 			    </p>
 			    <div class="progress-front" ng-style="{'width': progressWidth + '%'}"></div>
 			    <div class="progress-back"></div>
@@ -72,9 +72,6 @@
 			<div name="position" class="position" ng-style="{'top': -45 - (100 - progressWidth) * 352 / 100 + 'px'}">
 
 			</div>
-			<p>
-				<button ng-show="complete" ng-click="active = 'active'">Ver resultado</button>
-			</p>
 		    </div>
 		    <img class="flip" src="img/flip.png" ng-click="showRanking = false"/>
 		</figure>

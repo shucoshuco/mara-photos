@@ -1,0 +1,10 @@
+﻿
+<div class="main makingOff">
+	<ul class="playList">
+		<li ng-repeat="audio in list">
+			<button class="play" ng-click="play(audio)" ng-show="!audio.playing" ng-disabled="playing"></button>
+			<button class="pause" ng-click="play(audio)" ng-show="audio.playing"></button>
+			<span ng-click="play(audio)">{{audio.text}}</span>
+		</li>
+	</ul>
+</div>

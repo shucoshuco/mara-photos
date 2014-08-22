@@ -1,5 +1,5 @@
 
-var images = [
+var imgs = [
 	{
 		name: "img/mara/DSC_0454.JPG",
 		takenDate: Date.parse("Mar 24th, 2013"),
@@ -320,31 +320,31 @@ var images = [
 	},
 	{
 		name: "img/mara/DSC_0303.JPG",
-		takenDate: Date.parse("Ago 01th, 2013"),
+		takenDate: Date.parse("Aug 01th, 2013"),
 		error: 0,
 		done: false
 	},
 	{
 		name: "img/mara/DSC_0309.JPG",
-		takenDate: Date.parse("Ago 01th, 2013"),
+		takenDate: Date.parse("Aug 01th, 2013"),
 		error: 0,
 		done: false
 	},
 	{
 		name: "img/mara/DSC_0314.JPG",
-		takenDate: Date.parse("Ago 03th, 2013"),
+		takenDate: Date.parse("Aug 03th, 2013"),
 		error: 0,
 		done: false
 	},
 	{
 		name: "img/mara/DSC_0321.JPG",
-		takenDate: Date.parse("Ago 04th, 2013"),
+		takenDate: Date.parse("Aug 04th, 2013"),
 		error: 0,
 		done: false
 	},
 	{
 		name: "img/mara/DSC_0322.JPG",
-		takenDate: Date.parse("Ago 04th, 2013"),
+		takenDate: Date.parse("Aug 04th, 2013"),
 		error: 0,
 		done: false
 	},
@@ -355,3 +355,5 @@ var images = [
 		done: false
 	}
 ]
+
+var images = false;

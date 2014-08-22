@@ -1,18 +1,21 @@
-function AudioController($scope, $timeout, AudioService) {
+function AudioController($scope, $timeout, $rootScope, AudioService) {
 
 	//bind AudioService to scope
 	$scope.player = AudioService;
 
-	$scope.audios = shuffle(audios);
+	audios = audios || shuffle(words);
+
+	$scope.audios = audios;
 	$scope.current = n;
 	$scope.word = "";
-	$scope.right = 50;
+	$scope.error = errorAudios;
+	$scope.errorLimit = errorAudiosLimit;
 	$scope.showRanking = false;
-	$scope.progressWidth = "0";
+	$scope.progressWidth = "100";
 	$scope.rankValues = rankValues;
-	$scope.complete = false;
 	$scope.playing = false;
 	$scope.progress = 0;
+	$scope.tries = 3;
 
 	$scope.updateAudio = function(n) {
 		$scope.summary = (n + 1) + ' / ' + $scope.audios.length;
@@ -39,27 +42,40 @@ function AudioController($scope, $timeout, AudioService) {
 
 		var audio = $scope.audios[current];
 
-		audio.done = true;
-		audio.ok = audio.word.contains($scope.selectedWord);
-		audio.selection = $scope.selectedWord;
+		var ok = audio.word.contains($scope.selectedWord);
 
-		if (audio.ok) {
-			$scope.right++;
-		}
+		if (!ok) {
+			$scope.error++;
+			if ($scope.error > $scope.errorLimit) {
+				$scope.error = $scope.errorLimit;
+			}
+			$scope.tries--;
+			errorAudios = $scope.error;
+		} 
 
-		$scope.formDisabled = true;
 		$scope.matches = new Array();
 
-		if ($scope.current == $scope.audios.length - 1) {
-			$scope.complete = true;
+		if (ok || $scope.tries === 0) {
+			audio.done = true;
+			audio.ok = ok;
+			audio.selection = $scope.selectedWord;
+	
+			$scope.formDisabled = true;
+			$scope.tries = 3;
+
+			if ($scope.current == $scope.audios.length - 1) {
+				$rootScope.$emit('finishStep');
+			}
 		}
 
-		$scope.progressWidth = 100 * $scope.right / $scope.audios.length;
+		$scope.progressWidth = 100 - $scope.error * 100 / $scope.errorLimit;
 	}
 
 	$scope.selectWord = function(word) {
 		$scope.selectedWord = word;
-		$scope.matches = new Array();
+		$timeout(function() {
+			$scope.matches = new Array();
+		}, 50);
 	}
 
 	$scope.$watch('selectedWord', function(newValue) {
