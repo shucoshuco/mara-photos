@@ -5,6 +5,8 @@ function AudioController($scope, $timeout, $rootScope, AudioService) {
 
 	audios = audios || shuffle(words);
 
+	$scope.images = ["words-1.jpg", "words-2.jpg", "words-3.jpg", "words-4.jpg", "words-5.jpg", "words-6.jpg", "words-7.jpg"];
+	$scope.imageIndex = -1;
 	$scope.audios = audios;
 	$scope.current = n;
 	$scope.word = "";
@@ -106,5 +108,12 @@ function AudioController($scope, $timeout, $rootScope, AudioService) {
 	});
 
 	$scope.updateAudio($scope.current);
+
+	$scope.$watch('current', function() {
+		$scope.imageIndex++;
+		if ($scope.imageIndex >= $scope.images.length) {
+			$scope.imageIndex = 0;
+		}
+	});
 };
 

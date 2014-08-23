@@ -9,6 +9,17 @@ h1 {
 	text-align: center;
 }
 
+.title h1 {
+	font-size: 40px;
+	font-style: italic;
+	color: red;
+	margin-top: 1em;
+}
+
+.title p {
+	margin: 3em 0;
+}
+
 div {
 	border-radius: 5px;
 }
@@ -156,10 +167,6 @@ div.photo, div.words {
 	transition: transform 1s;
 }
 
-div.words {
-	background-image: url('../img/words.jpg');
-}
-
 button.play, button.pause {
     background-position: left center;
     background-repeat: no-repeat;
@@ -184,6 +191,8 @@ img.bebe {
     position: absolute;
     left: 900px;
     top: 230px;
+    width: 100px;
+    height: 100px;
 }
 
 span.summary {
