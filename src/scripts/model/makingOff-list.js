@@ -2,26 +2,30 @@
 var makingOff = [
 	{
 		"text": "Varios 1",
-		"file": "media/words/z-mara-talking-2.mp3"
+		"file": "media/words/z-mara-talking-1.mp3"
 	},
 	{
 		"text": "Varios 2",
-		"file": "media/words/z-mara-talking-3.mp3"
+		"file": "media/words/z-mara-talking-2.mp3"
 	},
 	{
 		"text": "Varios 3",
-		"file": "media/words/z-mara-talking-4.mp3"
+		"file": "media/words/z-mara-talking-3.mp3"
 	},
 	{
 		"text": "Varios 4",
-		"file": "media/words/z-mara-talking-5.mp3"
+		"file": "media/words/z-mara-talking-4.mp3"
 	},
 	{
 		"text": "Varios 5",
-		"file": "media/words/z-mara-talking-6.mp3"
+		"file": "media/words/z-mara-talking-5.mp3"
 	},
 	{
 		"text": "Varios 6",
+		"file": "media/words/z-mara-talking-6.mp3"
+	},
+	{
+		"text": "Varios 7",
 		"file": "media/words/z-mara-talking-7.mp3"
 	},
 	{

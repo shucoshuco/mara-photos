@@ -259,12 +259,6 @@ var words = [
 		done: false
 	},
 	{
-		name: "media/words/mas.mp3",
-		word: ["Más"],
-		ok: false,
-		done: false
-	},
-	{
 		name: "media/words/miau.mp3",
 		word: ["Miau", "Gato"],
 		ok: false,
@@ -381,12 +375,6 @@ var words = [
 	{
 		name: "media/words/rana.mp3",
 		word: ["Rana"],
-		ok: false,
-		done: false
-	},
-	{
-		name: "media/words/salchichas.mp3",
-		word: ["Salchichas"],
 		ok: false,
 		done: false
 	},

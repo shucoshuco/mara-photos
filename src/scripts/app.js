@@ -5,7 +5,7 @@ var baseDate = Date.parse('Nov 23th, 2012');
 var errorPhotos = 0;
 var errorPhotosLimit = 4000;
 var errorAudios = 0;
-var errorAudiosLimit = 50;
+var errorAudiosLimit = 120;
 var globalStep = 0;
 
 app.config(function($routeProvider) {

@@ -35,7 +35,7 @@ app.directive("forwardable", function() {
 		
 			var canGoForward = function(value, list) {
 				return value < list.length - 1
-					//&& list[value].done;
+					&& list[value].done;
 			};
 
 			element.bind("mouseenter", function() {

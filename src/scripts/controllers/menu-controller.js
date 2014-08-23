@@ -1,11 +1,11 @@
 function MenuController($scope, $timeout, $rootScope, $location) {
 
-	$scope.images = shuffle(imgs);
+	$scope.images = shuffle(mamas);
 	$scope.globalStep = 0;
 
 	$scope.changeCarrouselImage = function() {
 		var random = Math.floor(Math.random() * ($scope.images.length - 1));
-		$scope.imageName = $scope.images[random].name;
+		$scope.imageName = $scope.images[random];
 		$timeout($scope.changeCarrouselImage, 3000);
 	}
 

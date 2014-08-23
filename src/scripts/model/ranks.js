@@ -21,13 +21,13 @@
 		text: "Madre atenta",
 		className: "good",
 		color: "rgba(0, 0, 255, 0.5)",
-		award: 6
+		award: 7
 	},
 	{
 		text: "Supermamá",
 		className: "great",
 		color: "rgba(0, 255, 0, 0.5)",
-		award: 8
+		award: 10
 	}
 ];
 

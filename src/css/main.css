@@ -2,6 +2,7 @@ body {
 	min-width: 1250px;
 	background-color: #F1F1F1;
 	font-size: 16px;
+	font-size-adjust:0.5;
 }
 
 h1 {
@@ -587,7 +588,7 @@ ul.playList li {
 	display: inline;
 	float: left;
 	width: 33%;
-	height: 4em;
+	height: 3.7em;
 }
 
 ul.playList li span {
